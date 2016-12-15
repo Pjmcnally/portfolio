@@ -1,0 +1,54 @@
+{% extends parent_template|default:"base.html" %}
+{% load staticfiles %}
+
+{% block meta %}
+  {{ block.super }}
+  <meta name="description" content="A site to display D&D spells">
+{% endblock %}
+
+{% block title %}
+  Spellbook
+{% endblock %}
+
+{% block links %}
+  {{ block.super }}
+  <link rel="icon" href="{% static 'site/favicon.ico' %}">
+  <!-- spellbook style sheet -->
+  <link href="{% static 'spellbook/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+  <!-- Fixed navbar -->
+  <nav class="navbar main-navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" id="nav-toggle-main" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Spellbook</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a class="class-link" id="all" href="/spellbook/">All</a></li>
+          {% for class in classes %}
+            <li><a class="class-link" id="{{ class.slug }}" href="{{ class.get_absolute_url }}">{{ class.name|title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block footer %}
+  {{ block.super }} All spell data created by Wizards of the Coast used under 
+  the <a href="http://www.opengamingfoundation.org/ogl.html">OGL</a>.
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <!-- Javascript for site -->
+  <script src="{% static 'site/js/main.js' %}"></script>
+{% endblock %}  

@@ -1,0 +1,54 @@
+{% extends parent_template|default:"spellbook/spellbook_base.html" %}
+{% load staticfiles %}
+
+{% block internal_nav %}
+  <!-- Second filxed navbar -->
+    <nav class="navbar internal-navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" id="nav-toggle-internal" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Spell Levels: </a>
+        </div>
+        <div id="navbar2" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav level-links in-nav-text">
+            <li><a href="#search" class="level-link hidden" id="ll-search">Search</a></li>
+            <li><a href="#cantrip" class="level-link hidden" id="ll-cantrip">Cantrips</a></li>
+            <li><a href="#level-1" class="level-link hidden" id="ll-level-1">1</a></li>
+            <li><a href="#level-2" class="level-link hidden" id="ll-level-2">2</a></li>
+            <li><a href="#level-3" class="level-link hidden" id="ll-level-3">3</a></li>
+            <li><a href="#level-4" class="level-link hidden" id="ll-level-4">4</a></li>
+            <li><a href="#level-5" class="level-link hidden" id="ll-level-5">5</a></li>
+            <li><a href="#level-6" class="level-link hidden" id="ll-level-6">6</a></li>
+            <li><a href="#level-7" class="level-link hidden" id="ll-level-7">7</a></li>
+            <li><a href="#level-8" class="level-link hidden" id="ll-level-8">8</a></li>
+            <li><a href="#level-9" class="level-link hidden" id="ll-level-9">9</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+  <div id=class="row">
+    <div class="col-md-6 spell-list-container">
+      <div class="spell-block">
+        <h2 id="search" class="fixed-anchor spell-level-header">Search</h2>
+        <form id="search-form">
+          <input id="search-input" class="form-control" type="text" name="search" placeholder="Search...">
+        </form>
+      </div>
+      <div id="content-box">
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script src="{% static 'spellbook/js/main.js' %}"></script>
+{% endblock %}

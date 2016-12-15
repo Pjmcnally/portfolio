@@ -1,0 +1,102 @@
+/*csslint order-alphabetical: false, box-sizing: false*/
+
+body {
+  padding-top: 100px;
+  /*background-color: tan;*/
+}
+
+.spell-level-header {
+    border-bottom: 2px solid #0A4958;
+}
+
+.fixed-anchor {
+    padding-top: 115px;
+    margin-top: -90px;
+}
+
+.navbar-collapse {
+  text-align: center;
+}
+
+.navbar-nav {
+    display:inline-block;
+    float:none;
+}
+
+.internal-navbar {
+    margin-top: 50px;
+    border-width: 0; 
+    background-color: white;
+}
+
+.internal-navbar .container {
+    background-color: lightgrey;
+}
+
+.form-control {
+    display: inline-block;
+}
+
+.spell-container {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+}
+
+.spell-name {
+    font-family: 'Mate SC', serif;
+    font-size: 3em;
+    margin-bottom: -5px;
+}
+
+.spell-school-level {
+    font-size: 1.25em;
+    font-style: italic;
+}
+.spell-detail p {
+    margin-bottom: 2px;
+}
+
+.spell-head, .spell-detail {
+    margin-bottom: 20px;
+}
+
+.spell-text table {
+    background-color: transparent;
+    border: 1px solid #0A4958;
+    border-collapse: collapse;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.spell-text thead {
+    border-color: inherit;
+    display: table-header-group;
+    vertical-align: middle;
+}
+
+.spell-text th {
+    background-color: #0A4958;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+}
+
+.spell-text tbody tr:nth-child(even) {
+   background-color: #ccc;
+}
+
+.spell-text td {
+    padding: 8px;
+    text-align: center;
+}
+
+.spell-block ul {
+    list-style-type: none;
+    padding-left: 1em;
+
+}
