@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from spellbook import urls as spellbook_urls
-
-from .views import redirect_root
+from home import urls as home_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', redirect_root),
     url(r'^spellbook/', include(spellbook_urls)),
+    # url(r'^lol_app/', include(lol_app_urls)),
+    # url(r'^baseball/', include(baseball_urls)),
+    # url(r'^gifter/', include(gifter_url)),
+    url(r'^', include(home_urls)),
 ]
