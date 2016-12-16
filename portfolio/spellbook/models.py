@@ -208,4 +208,4 @@ class Spell(models.Model):
         pass
 
     def get_absolute_url(self):
-        return reverse('spell_detail', kwargs={'slug': self.slug})
+        return reverse('sb_spell_detail', kwargs={'slug': self.slug})
