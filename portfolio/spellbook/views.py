@@ -6,7 +6,7 @@ from .models import Clss, Spell
 
 
 @ensure_csrf_cookie
-def spell_list(request, slug=None):
+def spell_page(request, slug=None):
     """ function to render spell list page """
     class_obj = None
     classes = Clss.objects.all()  # get all classes for navbar
