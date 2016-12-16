@@ -64,7 +64,7 @@ function loadContent () {
     clss = parseClassRef(_href);
     $.ajax({
         method: "post",
-        url: "/spellbook/spell_content",
+        url: "/spellbook/spells",
         data: {
             class: clss,
             search: $("#search-input").val(),

@@ -25,7 +25,7 @@ def spell_detail(request, slug):
     return render(request, 'spellbook/spell_detail.html', context)
 
 
-def spell_content(request):
+def spells(request):
     if request.method == 'POST':
 
         clss = request.POST.get("class", None)
