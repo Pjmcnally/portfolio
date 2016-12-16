@@ -39,22 +39,27 @@ def spells(request):
         if search:
             spells = spells.filter(name__icontains=search)
 
-        spell_dict = {
-            0: spells.filter(level__num=0),
-            1: spells.filter(level__num=1),
-            2: spells.filter(level__num=2),
-            3: spells.filter(level__num=3),
-            4: spells.filter(level__num=4),
-            5: spells.filter(level__num=5),
-            6: spells.filter(level__num=6),
-            7: spells.filter(level__num=7),
-            8: spells.filter(level__num=8),
-            9: spells.filter(level__num=9),
-        }
+        if spells:
+            spell_dict = {
+                0: spells.filter(level__num=0),
+                1: spells.filter(level__num=1),
+                2: spells.filter(level__num=2),
+                3: spells.filter(level__num=3),
+                4: spells.filter(level__num=4),
+                5: spells.filter(level__num=5),
+                6: spells.filter(level__num=6),
+                7: spells.filter(level__num=7),
+                8: spells.filter(level__num=8),
+                9: spells.filter(level__num=9),
+            }
 
-        context = {
-            'spells': spell_dict}
+            context = {
+                'spells': spell_dict}
+
+            return render(request, 'spellbook/spells.html', context)
+
+        else:
+            return HttpResponse("No spells found!")
+
     else:
         return HttpResponse("")
-
-    return render(request, 'spellbook/spell_content.html', context)
