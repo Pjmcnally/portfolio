@@ -1,1 +1,76 @@
 {% extends parent_template|default:"base.html" %}
+{% load static %}
+
+{% block links %}
+  {{ block.super }}
+  <!-- home style sheet -->
+  <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-fixed-top">
+    <ul class="nav">
+      <li><a href="/projects">Projects</a></li>
+      <li><a class="active" href="/">About Me </a></li>
+      <li><a href="/contact">Contact </a></li>
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+<p>a </p>
+{% endblock %}
