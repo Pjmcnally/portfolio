@@ -1,14 +1,17 @@
 /*csslint order-alphabetical: false, box-sizing: false*/
 
 body {
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .nav{
+    font-size: 1.25em;
+    font-family: 'Roboto', sans-serif;
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: center;
+    padding-top: 10px;
 }
 .nav > li{
     display: inline;
