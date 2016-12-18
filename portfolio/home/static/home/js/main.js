@@ -1,4 +1,8 @@
 function loadContent() {
+    _href = window.location.pathname;
+
+    // This should go in the ajax callback
+    switchActive(_href);
     console.log("content should be loaded");
 }
 
@@ -10,7 +14,6 @@ $(function() {
         // hijack the nav click event
         $(".nav a").on("click", function(event) {
             event.preventDefault();
-            switchActive($(this));
             _href = $(this).attr("href");
 
             // change the url without a page refresh and add a history entry.
@@ -25,7 +28,7 @@ $(function() {
 });
 
 // Switches active higlighted nav button in main nav.
-function switchActive (elem) {
+function switchActive (_href) {
     $(".nav a").removeClass("active");
-    elem.addClass("active");
+    $('a[href="' + _href + '"]').addClass("active");
 }
