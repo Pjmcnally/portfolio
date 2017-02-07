@@ -2,7 +2,7 @@
 
 Welcome to the github repository for my portfolio project.  It is still in development.
 
-This will function both as a page about me and as a central hub of all my projects to date.
+This site will function both as a page about me and as a central hub of all my projects.
 
 This project will be finished shortly.
 
