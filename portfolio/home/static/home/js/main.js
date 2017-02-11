@@ -1,10 +1,4 @@
-function loadContent() {
-    _href = window.location.pathname;
-
-    // This should go in the ajax callback
-    switchActive(_href);
-    console.log("content should be loaded");
-}
+$(document).ready(loadContent);
 
 // Set listener to loadContent when nav link is clicked.
 $(function() {
@@ -26,6 +20,22 @@ $(function() {
         // History not supported.  Nothing Fancy here.
     }
 });
+
+// Load content from django database into page.
+function loadContent () {
+    _href = window.location.pathname;
+    $.ajax({
+        method: "post",
+        url: "/content",
+        data: {
+            page: _href
+        },
+        success: function(data){
+            $("#content-box").html(data);
+            switchActive(_href);
+        }
+    });
+}
 
 // Switches active higlighted nav button in main nav.
 function switchActive (_href) {
