@@ -24,10 +24,8 @@ $(function() {
 // Load content from django database into page.
 function loadContent () {
     _href = window.location.pathname;
-    console.log(_href);
-    if (_href === "/") {
-        _href = "/about_me";
-    }
+    // Not a fan of this conditional.  It is a hacky fix to original load of page
+    if (_href === "/") {_href = "/about_me";}
     $.ajax({
         method: "post",
         url: "/content",
