@@ -3,7 +3,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 
 def home(request):
-    return render(request, 'home/base.html', {})
+    return render(request, 'home/home_base.html', {})
 
 
 @ensure_csrf_cookie
