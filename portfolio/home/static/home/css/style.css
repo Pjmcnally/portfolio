@@ -4,12 +4,23 @@ body {
   padding-top: 100px;
 }
 
-/*.project {
+.project {
+  color: black;
   display: inline-block;
-  width: 200px;
-  height: 200px;
   border: 1px solid red;
-}*/
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+}
+
+.project:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.project:visited {
+  color: black;
+}
 
 .nav{
     font-size: 1.25em;
