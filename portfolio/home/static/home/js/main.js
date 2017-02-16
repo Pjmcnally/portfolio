@@ -25,7 +25,7 @@ $(function() {
 function loadContent () {
     _href = window.location.pathname;
     // Not a fan of this conditional.  It is a hacky fix to original load of page
-    if (_href === "/") {_href = "/about_me";}
+    if (_href === "/") {_href = "/projects";}
     $.ajax({
         method: "post",
         url: "/content",
