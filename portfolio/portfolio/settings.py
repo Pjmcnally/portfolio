@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'spellbook',
     'magic',
     'baseball',
-    'lol_app'
+    'lol_app',
 ]
 
 MIDDLEWARE = [
