@@ -1,0 +1,36 @@
+{% extends parent_template|default:"base.html" %}
+{% load staticfiles %}
+
+{% block meta %}
+  {{ block.super }}
+  <meta name="description" content="A site to display D&D spells">
+{% endblock %}
+
+{% block title %}
+  Magic trick
+{% endblock %}
+
+{% block links %}
+  {{ block.super }}
+  <!-- Favicon created by and downloaded from FlatIcon at http://www.flaticon.com/free-icon/playing-cards_103237 -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'magic/icon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'magic/icon/favicon-32x32.png' %}" sizes="32x32">
+  <link rel="icon" type="image/png" href="{% static 'magic/icon/favicon-16x16.png' %}" sizes="16x16">
+  <link rel="manifest" href="{% static 'magic/icon/manifest.json' %}">
+  <meta name="theme-color" content="#ffffff">
+  <!-- spellbook style sheet -->
+  <link href="{% static 'magic/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block footer %}
+  {{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <!-- Javascript for site -->
+  <script src="{% static 'site/js/main.js' %}"></script>
+{% endblock %}
