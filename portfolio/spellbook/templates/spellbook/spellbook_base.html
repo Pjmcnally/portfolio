@@ -12,7 +12,12 @@
 
 {% block links %}
   {{ block.super }}
-  <link rel="icon" href="{% static 'spellbook/favicon.ico' %}">
+  <!-- Favicon created by and downloaded from FlatIcon at http://www.flaticon.com/free-icon/open-book-top-view_43212 -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'spellbook/icon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'spellbook/icon/favicon-32x32.png' %}" sizes="32x32">
+  <link rel="icon" type="image/png" href="{% static 'spellbook/icon/favicon-16x16.png' %}" sizes="16x16">
+  <link rel="manifest" href="{% static 'spellbook/icon/manifest.json' %}">
+  <meta name="theme-color" content="#ffffff">
   <!-- spellbook style sheet -->
   <link href="{% static 'spellbook/css/style.css' %}" rel="stylesheet">
 {% endblock %}
