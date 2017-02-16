@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'home',
     'spellbook',
     'magic',
+    'baseball',
+    'lol_app'
 ]
 
 MIDDLEWARE = [
