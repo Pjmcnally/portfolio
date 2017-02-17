@@ -17,12 +17,16 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from spellbook import urls as spellbook_urls
 from home import urls as home_urls
+from magic import urls as magic_urls
+from baseball import urls as baseball_urls
+from lol_app import urls as lol_app_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^spellbook/', include(spellbook_urls)),
-    # url(r'^lol_app/', include(lol_app_urls)),
-    # url(r'^baseball/', include(baseball_urls)),
+    url(r'^lol_app/', include(lol_app_urls)),
+    url(r'^baseball/', include(baseball_urls)),
+    url(r'^magic/', include(magic_urls)),
     # url(r'^gifter/', include(gifter_url)),
     url(r'^', include(home_urls)),
 ]
