@@ -1,5 +1,11 @@
 $(document).ready(loadContent);
 
+// Set listener to loadContent content on popstate event.
+$(window).on("popstate", function() {
+    // $("#search-input").val("");
+    loadContent();
+});
+
 // Set listener to loadContent when nav link is clicked.
 $(function() {
     if (Modernizr.history) {
