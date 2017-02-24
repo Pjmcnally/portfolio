@@ -2,6 +2,9 @@
 
 body {
   padding-top: 100px;
+  background-color: #f8f8f8;
+  color: #373737;
+  font-family: 'Roboto', sans-serif;
 }
 
 .project {
@@ -17,13 +20,9 @@ body {
   margin-left: -1px;
 }
 
-.project:hover {
+.project:hover, .project:visited {
   text-decoration: none;
-  color: black;
-}
-
-.project:visited {
-  color: black;
+  color: #373737;
 }
 
 /* Hover code and box shadow from project found at http://callmenick.com/post/stylish-css-buttons*/
@@ -47,24 +46,24 @@ body {
 
 .nav{
     font-size: 1.25em;
-    font-family: 'Roboto', sans-serif;
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: center;
     padding-top: 10px;
-    background-color: white;
 }
+
 .nav > li{
     display: inline;
 }
+
 .nav > li > a{
     position: relative;
     display: inline-block;
     margin: 15px 20px;
     padding: 0;
     padding-bottom: 5px;
-    color: black;
+    color: #373737;
 }
 
 /* Overrides bootstrap default style */
