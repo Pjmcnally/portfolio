@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'magic',
     'baseball',
     'lol_app',
+    'contact',
 ]
 
 MIDDLEWARE = [
