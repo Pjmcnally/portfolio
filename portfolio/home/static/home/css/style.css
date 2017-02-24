@@ -35,6 +35,10 @@ body {
   width: 64px;
 }
 
+.navbar {
+  background-color: #f8f8f8;
+}
+
 /* Line code found at https://css-tricks.com/examples/hrs/*/
 .line {
     margin-top: 10px;
