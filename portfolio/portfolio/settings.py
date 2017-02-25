@@ -84,7 +84,14 @@ DATABASES = local_settings.DATABASES_sqlite
 # Email
 # https://docs.djangoproject.com/en/1.10/topics/email
 
-EMAIL_BACKEND = 'django.core.mail.backends/console.EmailBackend'
+# Email smpt settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = local_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = local_settings.EMAIL_HOST_PASSWORD
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# Email backend settings
 SERVER_EMAIL = local_settings.SERVER_EMAIL
 DEFAULT_FROM_EMAIL = local_settings.DEFAULT_FROM_EMAIL
 EMAIL_SUBJECT_PREFIX = local_settings.EMAIL_SUBJECT_PREFIX
