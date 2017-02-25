@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'magic',
     'baseball',
     'lol_app',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +80,15 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = local_settings.DATABASES_sqlite
+
+# Email
+# https://docs.djangoproject.com/en/1.10/topics/email
+
+EMAIL_BACKEND = 'django.core.mail.backends/console.EmailBackend'
+SERVER_EMAIL = local_settings.SERVER_EMAIL
+DEFAULT_FROM_EMAIL = local_settings.DEFAULT_FROM_EMAIL
+EMAIL_SUBJECT_PREFIX = local_settings.EMAIL_SUBJECT_PREFIX
+MANAGERS = local_settings.MANAGERS
 
 
 # Password validation
