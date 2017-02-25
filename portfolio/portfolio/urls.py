@@ -20,6 +20,7 @@ from home import urls as home_urls
 from magic import urls as magic_urls
 from baseball import urls as baseball_urls
 from lol_app import urls as lol_app_urls
+from contact import urls as contact_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +28,7 @@ urlpatterns = [
     url(r'^lol_app/', include(lol_app_urls)),
     url(r'^baseball/', include(baseball_urls)),
     url(r'^magic/', include(magic_urls)),
+    url(r'^email/', include(contact_urls)),
     # url(r'^gifter/', include(gifter_url)),
     url(r'^', include(home_urls)),
 ]
