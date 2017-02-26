@@ -11,20 +11,23 @@ class ContactForm(forms.Form):
         widget=forms.TextInput(attrs={
             'placeholder': 'Name',
             'name': 'name',
+            'class': 'form-control',
         }))
     email = forms.EmailField(
         label='',
         widget=forms.TextInput(attrs={
             'placeholder': 'Email *',
             'type': 'email',
-            'name': 'email'
+            'name': 'email',
+            'class': 'form-control',
         }))
     text = forms.CharField(
         label='',
         widget=forms.Textarea(attrs={
             'placeholder': 'Message *',
             'type': 'text',
-            'name': 'message'
+            'name': 'message',
+            'class': 'form-control',
         }))
 
     def send_mail(self):
