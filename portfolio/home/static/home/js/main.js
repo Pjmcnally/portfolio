@@ -27,27 +27,25 @@ $(function() {
     }
 });
 
-function stupid() {
+function setEmailListener() {
     $('#email-form').on('submit', function(event) {
         event.preventDefault();
-        testSubmit();
+        submitEmail();
     });
 }
 
 function getEmailContent() {
-    console.log("test");
     $.ajax({
         method: "get",
         url: "/email/",
         success: function(data){
             $("#email-container").html(data);
-            stupid();
+            setEmailListener();
         }
     });
 }
 
-function testSubmit() {
-    console.log("test");
+function submitEmail() {
     $.ajax({
         method: "post",
         url: "/email/",
@@ -57,7 +55,7 @@ function testSubmit() {
             text: $('#id_text').val()},
         success: function(data){
             $("#email-container").html(data);
-            stupid();
+            setEmailListener();
         }
     });
 }
@@ -65,7 +63,6 @@ function testSubmit() {
 // Load content from django database into page.
 function loadContent() {
     _href = window.location.pathname;
-    console.log(_href);
     // Not a fan of this conditional.  It is a hacky fix to original load of page
     if (_href === "/") {_href = "/projects";}
     $.ajax({
@@ -79,7 +76,7 @@ function loadContent() {
             switchActive(_href);
             if (_href === "/contact") {
                 getEmailContent();
-                stupid();
+                setEmailListener();
             }
         }
     });
