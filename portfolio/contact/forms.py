@@ -8,13 +8,24 @@ class ContactForm(forms.Form):
     name = forms.CharField(
         required=False,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': "Name"}))
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Name',
+            'name': 'name',
+        }))
     email = forms.EmailField(
         label='',
-        widget=forms.TextInput(attrs={'placeholder': "Email *"}))
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Email *',
+            'type': 'email',
+            'name': 'email'
+        }))
     text = forms.CharField(
         label='',
-        widget=forms.Textarea(attrs={'placeholder': "Message *"}))
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Message *',
+            'type': 'text',
+            'name': 'message'
+        }))
 
     def send_mail(self):
         name = self.cleaned_data.get('name')
