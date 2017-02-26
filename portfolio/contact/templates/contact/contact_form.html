@@ -9,7 +9,8 @@
     <div>
       <form
         action="{% url 'email' %}"
-        method="post">
+        method="post"
+        novalidate>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">
