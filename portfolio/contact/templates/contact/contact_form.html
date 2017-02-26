@@ -1,13 +1,8 @@
-{% extends parent_template|default:"contact/base_contact.html" %}
 
-{% block title %}
-{{ block.super }} - Contact Us!
-{% endblock %}
-
-{% block content %}
   <div>
     <div>
       <form
+        id="email-form"
         action="{% url 'email' %}"
         method="post"
         novalidate>
@@ -18,4 +13,4 @@
       </form>
     </div>
   </div>
-{% endblock %}
+
