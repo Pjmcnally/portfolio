@@ -6,12 +6,15 @@ from django.core.mail import send_mail as send
 
 class ContactForm(forms.Form):
     name = forms.CharField(
-        label='Name',
-        widget=forms.TextInput(attrs={'placeholder': "Your Name"}))
+        required=False,
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': "Name"}))
     email = forms.EmailField(
-        label='Email',
-        widget=forms.TextInput(attrs={'placeholder': "Your Email"}))
-    text = forms.CharField(widget=forms.Textarea)
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': "Email *"}))
+    text = forms.CharField(
+        label='',
+        widget=forms.Textarea(attrs={'placeholder': "Message *"}))
 
     def send_mail(self):
         name = self.cleaned_data.get('name')
