@@ -7,6 +7,38 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.contact {
+  text-align: center
+}
+
+.social-links {
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.social-links .fa {
+    text-align: center;
+    display: inline-block;
+    font: normal normal normal 40px/1 FontAwesome;
+    font-size: 40px;
+}
+
+.social-links a {
+    vertical-align: top;
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    margin: 0 4px;
+    height: 40px;
+    width: 40px;
+}
+
+.social-links img {
+  height: 100%;
+}
+
+
 .project {
   height:250px;
   color: black;
