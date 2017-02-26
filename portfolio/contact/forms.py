@@ -29,8 +29,6 @@ class ContactForm(forms.Form):
                 ['patrick@pjmcnally.net'],
                 fail_silently=False,
             )
-
-            # mail_managers(full_reason, body)
         except BadHeaderError:
             self.add_error(
                 None,
