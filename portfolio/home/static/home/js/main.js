@@ -30,7 +30,7 @@ $(function() {
 function stupid() {
     $('#email-form').on('submit', function(event) {
         event.preventDefault();
-        postEmailContent();
+        testSubmit();
     });
 }
 
@@ -46,13 +46,18 @@ function getEmailContent() {
     });
 }
 
-function postEmailContent() {
+function testSubmit() {
     console.log("test");
     $.ajax({
         method: "post",
         url: "/email/",
+        data: {
+            name: $('#id_name').val(),
+            email: $('#id_email').val(),
+            text: $('#id_text').val()},
         success: function(data){
             $("#email-container").html(data);
+            stupid();
         }
     });
 }
@@ -74,6 +79,7 @@ function loadContent() {
             switchActive(_href);
             if (_href === "/contact") {
                 getEmailContent();
+                stupid();
             }
         }
     });
