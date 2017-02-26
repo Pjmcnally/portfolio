@@ -27,9 +27,40 @@ $(function() {
     }
 });
 
+function stupid() {
+    $('#email-form').on('submit', function(event) {
+        event.preventDefault();
+        postEmailContent();
+    });
+}
+
+function getEmailContent() {
+    console.log("test");
+    $.ajax({
+        method: "get",
+        url: "/email/",
+        success: function(data){
+            $("#email-container").html(data);
+            stupid();
+        }
+    });
+}
+
+function postEmailContent() {
+    console.log("test");
+    $.ajax({
+        method: "post",
+        url: "/email/",
+        success: function(data){
+            $("#email-container").html(data);
+        }
+    });
+}
+
 // Load content from django database into page.
-function loadContent () {
+function loadContent() {
     _href = window.location.pathname;
+    console.log(_href);
     // Not a fan of this conditional.  It is a hacky fix to original load of page
     if (_href === "/") {_href = "/projects";}
     $.ajax({
@@ -41,6 +72,9 @@ function loadContent () {
         success: function(data){
             $("#content-box").html(data);
             switchActive(_href);
+            if (_href === "/contact") {
+                getEmailContent();
+            }
         }
     });
 }
