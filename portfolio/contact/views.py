@@ -18,5 +18,5 @@ class EmailMe(View):
             if mail_sent:
                 # shortcut for add_message
                 success(request, 'Email successfully sent.')
-                return redirect('home')
+                return render(request, self.template_name, {'form': self.form_class()})
         return render(request, self.template_name, {'form': bound_form})
