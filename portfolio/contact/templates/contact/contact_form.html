@@ -1,16 +1,11 @@
-
-  <div>
-    <div>
-      <form
-        id="email-form"
-        action="{% url 'email' %}"
-        method="post"
-        novalidate>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">
-          Contact Us!</button>
-      </form>
-    </div>
-  </div>
+<form
+  id="email-form"
+  action="{% url 'email' %}"
+  method="post"
+  novalidate>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">
+    Contact Us!</button>
+</form>
 
