@@ -45,14 +45,20 @@ function getEmailContent() {
     });
 }
 
-$(document).ready(function () {
-    $(document).ajaxStart(function () {
-        console.log('start');
-        $("#loader").show();
-    }).ajaxStop(function () {
-        $("#loader").hide();
-        console.log('end');
-    });
+
+// Function to put delay on Ajax loading icon so that it doesn't flash
+// when a quick request is made.
+// code found at http://stackoverflow.com/a/1851583
+var ajaxLoadTimeout;
+$(document).ajaxStart(function() {
+    ajaxLoadTimeout = setTimeout(function() {
+        $("#overlay").show();
+    }, 300);
+
+// Function to clear time out and hide loading icon when ajax finishes.
+}).ajaxSuccess(function() {
+    clearTimeout(ajaxLoadTimeout);
+    $("#overlay").hide();
 });
 
 function submitEmail() {
