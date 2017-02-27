@@ -45,6 +45,16 @@ function getEmailContent() {
     });
 }
 
+$(document).ready(function () {
+    $(document).ajaxStart(function () {
+        console.log('start');
+        $("#loading").show();
+    }).ajaxStop(function () {
+        $("#loading").hide();
+        console.log('end');
+    });
+});
+
 function submitEmail() {
     $.ajax({
         method: "post",
