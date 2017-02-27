@@ -15,5 +15,11 @@
   </div>
   <button type="submit" class="btn btn-secondary">Send Your Email!</button>
   <p class="required">* Required</p>
+
+  {% if messages %}
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  {% endif %}
 </form>
 
