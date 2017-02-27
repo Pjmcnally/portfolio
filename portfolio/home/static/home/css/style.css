@@ -6,6 +6,27 @@ body {
   color: #373737;
   font-family: 'Roboto', sans-serif;
 }
+.form-group ul {
+  color: red;
+  text-align: left;
+  list-style: none;
+}
+
+.field-wrapper {
+  height: 50px;
+}
+
+.noresize {
+  resize: none;
+}
+
+.message-wrapper {
+  height: 225px;
+}
+
+.email-header {
+  margin-top: 50px;
+}
 
 .contact {
   text-align: center
