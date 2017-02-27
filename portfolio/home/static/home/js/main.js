@@ -48,9 +48,9 @@ function getEmailContent() {
 $(document).ready(function () {
     $(document).ajaxStart(function () {
         console.log('start');
-        $("#loading").show();
+        $("#loader").show();
     }).ajaxStop(function () {
-        $("#loading").hide();
+        $("#loader").hide();
         console.log('end');
     });
 });
