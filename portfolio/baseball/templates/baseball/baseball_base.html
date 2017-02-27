@@ -1,0 +1,40 @@
+{% extends parent_template|default:"base.html" %}
+{% load staticfiles %}
+
+{% block meta %}
+  {{ block.super }}
+  <meta name="description" content="A site to visualize baseball careers">
+{% endblock %}
+
+{% block title %}
+  Baseball Visualizer
+{% endblock %}
+
+{% block links %}
+  {{ block.super }}
+  <!-- Favicon created by and downloaded from FlatIcon at http://www.flaticon.com/free-icon/baseball-field_177341 -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'baseball/icon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'baseball/icon/favicon-32x32.png' %}" sizes="32x32">
+  <link rel="icon" type="image/png" href="{% static 'baseball/icon/favicon-16x16.png' %}" sizes="16x16">
+  <link rel="manifest" href="{% static 'baseball/icon/manifest.json' %}">
+  <meta name="theme-color" content="#ffffff">
+  <!-- spellbook style sheet -->
+  <link href="{% static 'baseball/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+  {{ message }}
+{% endblock %}
+
+{% block footer %}
+  {{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <!-- Javascript for site -->
+  <script src="{% static 'site/js/main.js' %}"></script>
+{% endblock %}

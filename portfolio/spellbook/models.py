@@ -27,7 +27,7 @@ class Clss(models.Model):
         return self.name.title()
 
     def get_absolute_url(self):
-        return reverse('class_spell_list', kwargs={'slug': self.slug})
+        return reverse('sb_class_spell_list', kwargs={'slug': self.slug})
 
     class Meta:
         ordering = ['name']
@@ -208,4 +208,4 @@ class Spell(models.Model):
         pass
 
     def get_absolute_url(self):
-        return reverse('spell_detail', kwargs={'slug': self.slug})
+        return reverse('sb_spell_detail', kwargs={'slug': self.slug})

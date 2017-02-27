@@ -1,0 +1,33 @@
+{% extends parent_template|default:"base.html" %}
+{% load static %}
+
+{% block links %}
+  {{ block.super }}
+  <!-- home style sheet -->
+  <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+  <!-- Roboto font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block navbar %}
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-fixed-top">
+    <ul class="nav">
+      <li><a href="/about_me">About Me </a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact </a></li>
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <div id="content-box">
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script src="{% static 'home/js/main.js' %}"></script>
+{% endblock %}

@@ -36,17 +36,17 @@
     {% block internal_nav %}
     {% endblock %}
 
-    <div class="container">
-      {% block content %}
+    {% block content %}
+      <div class="container">
         This is default content!
-      {% endblock %}
-    </div>
+      </div>
+    {% endblock %}
 
     <footer class="footer">
       <div class="container col-xs-12">
         <div class="table-center">
           {% block footer %}
-            &copy; 2016 <a href="https://github.com/Pjmcnally">Patrick McNally</a>.
+            &copy; 2016 <a href="/">Patrick McNally</a>
           {% endblock %}
         </div>
       </div>

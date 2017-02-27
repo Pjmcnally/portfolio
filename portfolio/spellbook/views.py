@@ -25,36 +25,41 @@ def spell_detail(request, slug):
     return render(request, 'spellbook/spell_detail.html', context)
 
 
-def spell_content(request):
+def spells(request):
     if request.method == 'POST':
 
         clss = request.POST.get("class", None)
         if clss:
             class_obj = Clss.objects.get(slug__iexact=clss)
-            spells = class_obj.spells.filter(source__public=True)
+            spells = class_obj.spells.all()  # filter(source__public=True)
         else:
-            spells = Spell.objects.filter(source__public=True)
+            spells = Spell.objects.all()  # filter(source__public=True)
 
         search = request.POST.get("search", None)
         if search:
             spells = spells.filter(name__icontains=search)
 
-        spell_dict = {
-            0: spells.filter(level__num=0),
-            1: spells.filter(level__num=1),
-            2: spells.filter(level__num=2),
-            3: spells.filter(level__num=3),
-            4: spells.filter(level__num=4),
-            5: spells.filter(level__num=5),
-            6: spells.filter(level__num=6),
-            7: spells.filter(level__num=7),
-            8: spells.filter(level__num=8),
-            9: spells.filter(level__num=9),
-        }
+        if spells:
+            spell_dict = {
+                0: spells.filter(level__num=0),
+                1: spells.filter(level__num=1),
+                2: spells.filter(level__num=2),
+                3: spells.filter(level__num=3),
+                4: spells.filter(level__num=4),
+                5: spells.filter(level__num=5),
+                6: spells.filter(level__num=6),
+                7: spells.filter(level__num=7),
+                8: spells.filter(level__num=8),
+                9: spells.filter(level__num=9),
+            }
 
-        context = {
-            'spells': spell_dict}
+            context = {
+                'spells': spell_dict}
+
+            return render(request, 'spellbook/spells.html', context)
+
+        else:
+            return HttpResponse("No spells found!")
+
     else:
         return HttpResponse("")
-
-    return render(request, 'spellbook/spell_content.html', context)

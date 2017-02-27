@@ -12,7 +12,12 @@
 
 {% block links %}
   {{ block.super }}
-  <link rel="icon" href="{% static 'site/favicon.ico' %}">
+  <!-- Favicon created by and downloaded from FlatIcon at http://www.flaticon.com/free-icon/open-book-top-view_43212 -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'spellbook/icon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'spellbook/icon/favicon-32x32.png' %}" sizes="32x32">
+  <link rel="icon" type="image/png" href="{% static 'spellbook/icon/favicon-16x16.png' %}" sizes="16x16">
+  <link rel="manifest" href="{% static 'spellbook/icon/manifest.json' %}">
+  <meta name="theme-color" content="#ffffff">
   <!-- spellbook style sheet -->
   <link href="{% static 'spellbook/css/style.css' %}" rel="stylesheet">
 {% endblock %}
@@ -28,7 +33,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Spellbook</a>
+        <a class="navbar-brand" href="/spellbook/">Spellbook</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -43,8 +48,8 @@
 {% endblock %}
 
 {% block footer %}
-  {{ block.super }} All spell data created by Wizards of the Coast used under 
-  the <a href="http://www.opengamingfoundation.org/ogl.html">OGL</a>.
+  {{ block.super }} - All spell data created by Wizards of the Coast used under
+  the <a href="https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf">OGL</a>.
 {% endblock %}
 
 {% block scripts %}
