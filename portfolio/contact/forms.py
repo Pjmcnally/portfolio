@@ -27,7 +27,7 @@ class ContactForm(forms.Form):
             'placeholder': 'Message *',
             'type': 'text',
             'name': 'message',
-            'class': 'form-control',
+            'class': 'form-control noresize',
         }))
 
     def send_mail(self):
