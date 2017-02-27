@@ -17,6 +17,6 @@ class EmailMe(View):
             mail_sent = bound_form.send_mail()
             if mail_sent:
                 # shortcut for add_message
-                success(request, 'Email successfully sent.')
+                success(request, 'Thanks for sending me an email. I will respond to your email as quickly as I can.')
                 return render(request, self.template_name, {'form': self.form_class()})
         return render(request, self.template_name, {'form': bound_form})
