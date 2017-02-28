@@ -29,11 +29,14 @@ body {
 }
 
 #email-container {
-  height: 550px;
+  min-height: 550px;
 }
 
 #email-container h3 {
-  color: #e2C044;
+  color: #f7f7f7;
+  background-color: #373737;
+  border-radius: 15px;
+  padding: 5px;
 }
 
 .contact {
