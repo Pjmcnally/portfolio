@@ -14,7 +14,7 @@ $(function() {
         // hijack the nav click event
         $(".class-link").on("click", function(event) {
             event.preventDefault();
-            _href = $(this).attr("href");
+            var _href = $(this).attr("href");
 
             // change the url without a page refresh and add a history entry.
             history.pushState(null, null, _href);
@@ -25,7 +25,7 @@ $(function() {
         // hijack the nav click event
         $(".level-link").on("click", function(event) {
             event.preventDefault();
-            _href = $(this).attr("href");
+            var _href = $(this).attr("href");
 
             // Change the url without a page refresh and add a history entry.
             history.pushState(null, null, _href);
@@ -39,13 +39,13 @@ $(function() {
 });
 
 // event listener to intercept form submission and instead load content
-$("#search-form").on("submit", function() {
+$("#search-form").on("submit", function(event) {
     event.preventDefault();
     loadContent();
 });
 
 // event listener to load content on value change in search field.
-$("#search-input").on("input", function() {
+$("#search-input").on("input", function(event) {
     event.preventDefault();
     removeHash();
     loadContent();
@@ -60,8 +60,8 @@ function removeHash () {
 
 // Load content from django database into page.
 function loadContent () {
-    _href = window.location.pathname;
-    clss = parseClassRef(_href);
+    var _href = window.location.pathname;
+    var clss = parseClassRef(_href);
     $.ajax({
         method: "post",
         url: "/spellbook/spells",
@@ -79,7 +79,7 @@ function loadContent () {
 }
 
 function scrollTopOrHash () {
-    hash = window.location.hash;
+    var hash = window.location.hash;
     if (hash) {
         $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
     } else {
@@ -92,7 +92,7 @@ function showLevelLink() {
     $(".level-link").addClass("hidden");
     $("#ll-search").removeClass("hidden");
     $.each($(".spell-level-header"), function (index, value) {
-        link = "#ll-" + value.id;
+        var link = "#ll-" + value.id;
         $(link).removeClass("hidden");
     });
 }
