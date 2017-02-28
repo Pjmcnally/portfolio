@@ -35,6 +35,10 @@ body {
   padding: 5px;
 }
 
+.email-wrapper button {
+  -webkit-appearance: none;
+}
+
 .contact {
   text-align: center
 }
