@@ -2,7 +2,6 @@
 
 body {
   padding-top: 100px;
-  /*background-color: tan;*/
 }
 
 .spell-level-header {
@@ -40,6 +39,7 @@ body {
 .spell-container {
     font-family: 'Lora', serif;
     font-size: 18px;
+    margin-bottom: 100px; /*Investigate this.  It shouldn't be needed*/
 }
 
 .spell-name {
