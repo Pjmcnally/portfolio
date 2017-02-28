@@ -24,15 +24,11 @@ body {
   height: 225px;
 }
 
-.email-header {
-  margin-top: 50px;
+.email-wrapper {
+  min-height: 600px;
 }
 
-#email-container {
-  min-height: 550px;
-}
-
-#email-container h3 {
+.email-wrapper h3 {
   color: #f7f7f7;
   background-color: #373737;
   border-radius: 15px;
@@ -50,20 +46,17 @@ body {
 }
 
 .social-links .fa {
-    text-align: center;
-    display: inline-block;
-    font: normal normal normal 40px/1 FontAwesome;
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .social-links a {
-    vertical-align: top;
-    display: inline-block;
-    color: #000000;
-    text-decoration: none;
-    margin: 0 4px;
-    height: 40px;
-    width: 40px;
+  vertical-align: top;
+  display: inline-block;
+  color: #383838;
+  text-decoration: none;
+  margin: 0 4px;
+  height: 40px;
+  width: 40px;
 }
 
 .social-links img {
