@@ -28,6 +28,14 @@ body {
   margin-top: 50px;
 }
 
+#email-container {
+  height: 550px;
+}
+
+#email-container h3 {
+  color: #e2C044;
+}
+
 .contact {
   text-align: center
 }
