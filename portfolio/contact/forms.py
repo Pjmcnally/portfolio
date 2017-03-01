@@ -34,9 +34,8 @@ class ContactForm(forms.Form):
         name = self.cleaned_data.get('name')
         from_email = self.cleaned_data.get('email')
         text = self.cleaned_data.get('text')
-        body = 'Message From: {} at {}\n\n{}\n'.format(
-            name, from_email, text)
-        subject = "Inquiry from contact me"
+        body = text
+        subject = 'Message From: {} at {}'.format(name, from_email)
         try:
             # shortcut for send mail
             send(
