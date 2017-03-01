@@ -78,13 +78,14 @@ body {
   display: inline-block;
   text-align: center;
   padding: 20px;
+  text-decoration: none;
   box-shadow: inset 0 0 0 1px #373737;
   border: none;
   margin-top: -1px;
   margin-left: -1px;
 }
 
-.project a:hover, .project a:visited, .project a {
+.project:hover, .project:visited {
   text-decoration: none;
   color: #373737;
 }
