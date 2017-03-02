@@ -15,24 +15,26 @@
 
 {% block content %}
   <div class="container spell-container col-md-8 col-md-offset-2"> 
-    <div class="spell-head">
-      <h1 class="spell-name">{{spell.name}}</h1>
-      <p class="spell-school-level">
-        {% if spell.level.num == 0 %}
-          {{spell.school}} {{spell.level}}
-        {% else %}
-          {{spell.level}} {{spell.school}}
-        {% endif %}
-      </p>
-    </div>
-    <div class="spell-detail">
-      <p><strong>Casting Time: </strong> {{ spell.casting_time }}{% if spell.cast_time_text %}, {{ spell.cast_time_text }} {% endif %}</p>
-      <p><strong>Range: </strong> {{ spell.rng }} {% if spell.range_text %} ({{ spell.range_text }}) {% endif %}</p>
-      <p><strong>Components: </Strong> {{ spell.component.all|join:", " }} {% if spell.component_text %} ({{ spell.component_text }}) {% endif %}</p>
-      <p><strong>Duration: </strong> {% if spell.concentration %} Concentration, {{ spell.duration }} {% else %} {{ spell.duration|capfirst }}{% endif %}</p>
-    </div>
-    <div class="spell-text">
-      {{spell.text|markdownify|safe}}
+    <div class="row">
+      <div class="spell-head">
+        <h1 class="spell-name">{{spell.name}}</h1>
+        <p class="spell-school-level">
+          {% if spell.level.num == 0 %}
+            {{spell.school}} {{spell.level}}
+          {% else %}
+            {{spell.level}} {{spell.school}}
+          {% endif %}
+        </p>
+      </div>
+      <div class="spell-detail">
+        <p><strong>Casting Time: </strong> {{ spell.casting_time }}{% if spell.cast_time_text %}, {{ spell.cast_time_text }} {% endif %}</p>
+        <p><strong>Range: </strong> {{ spell.rng }} {% if spell.range_text %} ({{ spell.range_text }}) {% endif %}</p>
+        <p><strong>Components: </strong> {{ spell.component.all|join:", " }} {% if spell.component_text %} ({{ spell.component_text }}) {% endif %}</p>
+        <p><strong>Duration: </strong> {% if spell.concentration %} Concentration, {{ spell.duration }} {% else %} {{ spell.duration|capfirst }}{% endif %}</p>
+      </div>
+      <div class="spell-text">
+        {{spell.text|markdownify|safe}}
+      </div>
     </div>
   </div>
 {% endblock %}
