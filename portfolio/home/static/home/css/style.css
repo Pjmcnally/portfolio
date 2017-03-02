@@ -12,6 +12,10 @@ body {
   list-style: none;
 }
 
+.btn-primary {
+    background-color: #373737;
+}
+
 .field-wrapper {
   height: 50px;
 }
@@ -33,11 +37,6 @@ body {
   background-color: #373737;
   border-radius: 15px;
   padding: 5px;
-}
-
-.btn {
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
 .contact, .project-main {
