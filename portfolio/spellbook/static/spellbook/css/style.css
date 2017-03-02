@@ -28,7 +28,23 @@ body {
     background-color: white;
 }
 
-.internal-navbar .container {
+.nav > li > a {
+    padding: 10px 10px;
+}
+
+@media (min-width: 768px) {
+  .internal-navbar .container-fluid {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+    .internal-navbar .navbar-brand {
+        margin-left: 60px;
+    }
+}
+
+.internal-navbar .container-fluid {
     background-color: lightgrey;
 }
 
