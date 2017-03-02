@@ -98,6 +98,10 @@ body {
   width: 64px;
 }
 
+.project .fa {
+  font-size: 64px;
+}
+
 .navbar {
   background-color: #f8f8f8;
 }
