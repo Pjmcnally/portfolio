@@ -39,12 +39,11 @@ body {
   -webkit-appearance: none;
 }
 
-.contact {
+.contact, .project-main {
   text-align: center
 }
 
 .social-links {
-  text-align: center;
   margin: 0 auto;
   width: 50%;
 }
@@ -76,7 +75,6 @@ body {
   height:250px;
   color: #373737;
   display: inline-block;
-  text-align: center;
   padding: 20px;
   text-decoration: none;
   box-shadow: inset 0 0 0 1px #373737;
