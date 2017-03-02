@@ -4,7 +4,6 @@ body {
   background-color: #f8f8f8;
   color: #373737;
   font-family: 'Roboto', sans-serif;
-  padding-left: 2px; /*This is hacky and should get fixed*/
 }
 
 .form-group ul {
@@ -42,6 +41,10 @@ body {
 
 .contact, .project-main {
   text-align: center
+}
+
+.project-main .row {
+  margin-left: -13px; /*This is a hacky way to fix the -1px margin left running into the edge of the screen*/
 }
 
 .social-links {
