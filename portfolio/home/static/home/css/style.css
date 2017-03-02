@@ -107,10 +107,6 @@ body {
   min-height: 70px;
 }
 
-.site-logo {
-  height: 50px;
-  width: 50px;
-}
 /* Line code found at https://css-tricks.com/examples/hrs/*/
 .line {
     margin-top: 10px;
