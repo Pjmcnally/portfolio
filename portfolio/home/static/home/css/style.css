@@ -35,8 +35,9 @@ body {
   padding: 5px;
 }
 
-.email-wrapper button {
+.btn {
   -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .contact, .project-main {
