@@ -31,9 +31,9 @@ def spells(request):
         clss = request.POST.get("class", None)
         if clss:
             class_obj = Clss.objects.get(slug__iexact=clss)
-            spells = class_obj.spells.all()  # filter(source__public=True)
+            spells = class_obj.spells.all().filter(source__public=True)
         else:
-            spells = Spell.objects.all()  # filter(source__public=True)
+            spells = Spell.objects.all().filter(source__public=True)
 
         search = request.POST.get("search", None)
         if search:
