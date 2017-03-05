@@ -175,6 +175,7 @@ class Spell(models.Model):
     text = models.TextField()
     concentration = models.BooleanField()
     ritual = models.BooleanField()
+    tweeted = models.BooleanField()
 
     cast_time_text = models.CharField(max_length=100)
     component_text = models.TextField()
