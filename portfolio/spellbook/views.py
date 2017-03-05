@@ -87,7 +87,15 @@ class RandomJson(View):
         return JsonResponse(spell_obj)
 
     def post(self, request):
-        if request.POST.get('key') != local_settings.API_KEY:  # simple attempt at security
+        if request.POST.get('key') != local_settings.TWITTERBOT_KEY: # simple attempt at security
             return None
         else:
-            pass
+            spell = choice(Spell.objects.all().filter(source__public=True).filter(tweeted=False))
+            if request.POST.get('track'):
+                spell.tweeted = True
+                spell.save()
+            spell_obj = {
+                'name': spell.name,
+                'url': spell.get_absolute_url(),
+                'slug': spell.slug}
+            return JsonResponse(spell_obj)
