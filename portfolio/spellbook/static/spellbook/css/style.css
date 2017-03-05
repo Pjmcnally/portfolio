@@ -42,6 +42,10 @@ body {
     .internal-navbar .navbar-brand {
         margin-left: 60px;
     }
+    .spell-container {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 }
 
 .internal-navbar .container-fluid {
