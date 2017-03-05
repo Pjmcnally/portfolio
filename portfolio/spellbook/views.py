@@ -1,6 +1,11 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.generic import View
+from random import choice
+from portfolio import local_settings
+import json
+
 
 from .models import Clss, Spell
 
@@ -63,3 +68,26 @@ def spells(request):
 
     else:
         return HttpResponse("")
+
+
+def random(request):
+    """ Function to redirect to random spell page """
+    r = RandomJson.as_view()(request)
+    json_data = json.loads(r.content.decode('utf-8'))
+    return redirect("sb_spell_detail", json_data["slug"])
+
+
+class RandomJson(View):
+    def get(self, request):
+        spell = choice(Spell.objects.all().filter(source__public=True))
+        spell_obj = {
+            'name': spell.name,
+            'url': spell.get_absolute_url(),
+            'slug': spell.slug}
+        return JsonResponse(spell_obj)
+
+    def post(self, request):
+        if request.POST.get('key') != local_settings.API_KEY:  # simple attempt at security
+            return None
+        else:
+            pass
