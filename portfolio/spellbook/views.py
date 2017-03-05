@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from django.views.generic import View
+from django.utils.decorators import method_decorator
 from random import choice
 from portfolio import local_settings
 import json
@@ -77,6 +78,7 @@ def random(request):
     return redirect("sb_spell_detail", json_data["slug"])
 
 
+@method_decorator(csrf_exempt, name="dispatch")
 class RandomJson(View):
     def get(self, request):
         spell = choice(Spell.objects.all().filter(source__public=True))
@@ -87,15 +89,27 @@ class RandomJson(View):
         return JsonResponse(spell_obj)
 
     def post(self, request):
-        if request.POST.get('key') != local_settings.TWITTERBOT_KEY: # simple attempt at security
+        if request.POST.get('key') != local_settings.TWITTERBOT_KEY:  # simple attempt at security
             return None
-        else:
-            spell = choice(Spell.objects.all().filter(source__public=True).filter(tweeted=False))
-            if request.POST.get('track'):
-                spell.tweeted = True
-                spell.save()
-            spell_obj = {
-                'name': spell.name,
-                'url': spell.get_absolute_url(),
-                'slug': spell.slug}
-            return JsonResponse(spell_obj)
+
+        spell = None
+
+        while not spell:
+            spells = Spell.objects.all().filter(source__public=True).filter(tweeted=False)
+
+            if spells:
+                spell = choice(spells)
+            else:  # If all spells have been tweeted reset them all
+                for spell in Spell.objects.all().filter(source__public=True):
+                    spell.tweeted = False
+                    spell.save()
+
+        if request.POST.get('track'):
+            spell.tweeted = True
+            spell.save()
+
+        spell_obj = {
+            'name': spell.name,
+            'url': spell.get_absolute_url(),
+            'slug': spell.slug}
+        return JsonResponse(spell_obj)
