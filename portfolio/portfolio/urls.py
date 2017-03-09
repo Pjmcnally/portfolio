@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
 from spellbook import urls as spellbook_urls
 from home import urls as home_urls
 from magic import urls as magic_urls
@@ -23,6 +24,7 @@ from lol_app import urls as lol_app_urls
 from contact import urls as contact_urls
 
 urlpatterns = [
+    url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots_file"),
     url(r'^admin/', admin.site.urls),
     url(r'^spellbook/', include(spellbook_urls)),
     url(r'^lol_app/', include(lol_app_urls)),
