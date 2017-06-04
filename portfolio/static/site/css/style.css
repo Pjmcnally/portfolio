@@ -18,13 +18,26 @@ body {
   padding-bottom: 10px;
 }
 
+
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 50px;
   background-color: #ccc;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    /* Set the fixed height of the footer here */
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    min-height: 50px;
+  }
 }
 
 .footer .container {
