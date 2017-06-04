@@ -23,7 +23,7 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  min-height: 50px;
+  height: 50px;
   background-color: #ccc;
 }
 
