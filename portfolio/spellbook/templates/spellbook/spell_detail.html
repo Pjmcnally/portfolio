@@ -20,9 +20,9 @@
         <h1 class="spell-name">{{spell.name}}</h1>
         <p class="spell-school-level">
           {% if spell.level.num == 0 %}
-            {{spell.school}} {{spell.level}}
+            {{spell.school}} {{spell.level}} {% if spell.ritual %} (ritual) {% endif %}
           {% else %}
-            {{spell.level}} {{spell.school}}
+            {{spell.level}} {{spell.school}} {% if spell.ritual %} (ritual) {% endif %}
           {% endif %}
         </p>
       </div>
