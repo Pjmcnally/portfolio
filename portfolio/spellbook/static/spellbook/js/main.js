@@ -51,6 +51,13 @@ $("#search-input").on("input", function(event) {
     loadContent();
 });
 
+// event listener to load content when ritual checkbox value changes
+$("#ritual").on("change", function(event) {
+    event.preventDefault();
+    removeHash();
+    loadContent();
+});
+
 
 function removeHash () {
     if (window.location.hash) {
@@ -67,6 +74,7 @@ function loadContent () {
         url: "/spellbook/spells",
         data: {
             class: clss,
+            ritual: $("#ritual").is(":checked"),
             search: $("#search-input").val(),
         },
         success: function(data){
