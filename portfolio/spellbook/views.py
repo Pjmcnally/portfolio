@@ -44,6 +44,10 @@ def spells(request):
         if ritual:
             spells = spells.filter(ritual=ritual)
 
+        conc = request.POST.get("conc") == "true"
+        if conc:
+            spells = spells.filter(concentration=conc)
+
         search = request.POST.get("search", None)
         if search:
             spells = spells.filter(name__icontains=search)

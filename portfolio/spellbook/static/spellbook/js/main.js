@@ -58,6 +58,12 @@ $("#ritual").on("change", function(event) {
     loadContent();
 });
 
+// event listener to load content when concentration checkbox value changes
+$("#conc").on("change", function(event) {
+    event.preventDefault();
+    removeHash();
+    loadContent();
+});
 
 function removeHash () {
     if (window.location.hash) {
@@ -75,6 +81,7 @@ function loadContent () {
         data: {
             class: clss,
             ritual: $("#ritual").is(":checked"),
+            conc: $("#conc").is(":checked"),
             search: $("#search-input").val(),
         },
         success: function(data){
