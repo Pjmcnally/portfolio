@@ -120,3 +120,17 @@ body {
     padding-left: 1em;
 
 }
+
+/* This section impacts the advanced search section */
+.search-option {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.search-option > p {
+    display: inline-block;
+}
+
+.adv-search {
+    margin-top: 15px;
+}
