@@ -51,16 +51,19 @@ $("#search-input").on("input", function(event) {
     loadContent();
 });
 
+// TODO: The two event listeners below should be collapsed into one.
 // event listener to load content when ritual checkbox value changes
-$("#ritual").on("change", function(event) {
-    event.preventDefault();
+$("#rit-btns").on("click", function(event) {
+    $("#rit-btns > .btn").removeClass("active");
+    $(event.target).addClass('active');
     removeHash();
     loadContent();
 });
 
 // event listener to load content when concentration checkbox value changes
-$("#conc").on("change", function(event) {
-    event.preventDefault();
+$("#conc-btns").on("click", function(event) {
+    $("#conc-btns > .btn").removeClass("active");
+    $(event.target).addClass('active');
     removeHash();
     loadContent();
 });
@@ -80,8 +83,8 @@ function loadContent () {
         url: "/spellbook/spells",
         data: {
             class: clss,
-            ritual: $("#ritual").is(":checked"),
-            conc: $("#conc").is(":checked"),
+            ritual: $("#rit-btns > .btn.active").val(),
+            conc: $("#conc-btns > .btn.active").val(),
             search: $("#search-input").val(),
         },
         success: function(data){
