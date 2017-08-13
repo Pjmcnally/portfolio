@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from random import choice
 from portfolio import local_settings
 import json
+from distutils import util
 
 
 from .models import Clss, Spell
@@ -35,18 +36,23 @@ def spells(request):
     if request.method == 'POST':
         spells = Spell.objects.filter(source__public=True)
 
+        # clss with either be provided or not
         clss = request.POST.get("class", None)
         if clss:
             class_obj = Clss.objects.get(slug__iexact=clss)
             spells = spells.filter(clss=class_obj)
 
-        ritual = request.POST.get("ritual") == "true"
+        # ritual will either be "true", "false" or ""(empty string)
+        ritual = request.POST.get("ritual", None)
         if ritual:
-            spells = spells.filter(ritual=ritual)
+            rit_bool = util.strtobool(ritual)
+            spells = spells.filter(ritual=rit_bool)
 
-        conc = request.POST.get("conc") == "true"
+        # conc will either be "true", "false" or ""(empty string)
+        conc = request.POST.get("conc", None)
         if conc:
-            spells = spells.filter(concentration=conc)
+            conc_bool = util.strtobool(conc)
+            spells = spells.filter(concentration=conc_bool)
 
         search = request.POST.get("search", None)
         if search:

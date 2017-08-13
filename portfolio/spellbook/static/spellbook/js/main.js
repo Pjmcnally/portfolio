@@ -52,15 +52,9 @@ $("#search-input").on("input", function(event) {
 });
 
 // event listener to load content when ritual checkbox value changes
-$("#ritual").on("change", function(event) {
-    event.preventDefault();
-    removeHash();
-    loadContent();
-});
-
-// event listener to load content when concentration checkbox value changes
-$("#conc").on("change", function(event) {
-    event.preventDefault();
+$(".btn").on("click", function(event) {
+    $(this).siblings().removeClass("active");
+    $(event.target).addClass('active');
     removeHash();
     loadContent();
 });
@@ -80,8 +74,8 @@ function loadContent () {
         url: "/spellbook/spells",
         data: {
             class: clss,
-            ritual: $("#ritual").is(":checked"),
-            conc: $("#conc").is(":checked"),
+            ritual: $("#rit-btns > .btn.active").val(),
+            conc: $("#conc-btns > .btn.active").val(),
             search: $("#search-input").val(),
         },
         success: function(data){
