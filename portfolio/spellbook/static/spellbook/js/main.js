@@ -51,18 +51,9 @@ $("#search-input").on("input", function(event) {
     loadContent();
 });
 
-// TODO: The two event listeners below should be collapsed into one.
 // event listener to load content when ritual checkbox value changes
-$("#rit-btns").on("click", function(event) {
-    $("#rit-btns > .btn").removeClass("active");
-    $(event.target).addClass('active');
-    removeHash();
-    loadContent();
-});
-
-// event listener to load content when concentration checkbox value changes
-$("#conc-btns").on("click", function(event) {
-    $("#conc-btns > .btn").removeClass("active");
+$(".btn").on("click", function(event) {
+    $(this).siblings().removeClass("active");
     $(event.target).addClass('active');
     removeHash();
     loadContent();
