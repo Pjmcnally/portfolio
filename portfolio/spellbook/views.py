@@ -54,6 +54,24 @@ def spells(request):
             conc_bool = util.strtobool(conc)
             spells = spells.filter(concentration=conc_bool)
 
+        # conc will either be "true", "false" or ""(empty string)
+        com_v = request.POST.get("com_v", None)
+        if com_v:
+            com_v_bool = util.strtobool(com_v)
+            spells = spells.filter(concentration=com_v_bool)
+
+        # conc will either be "true", "false" or ""(empty string)
+        com_s = request.POST.get("com_s", None)
+        if com_s:
+            com_s_bool = util.strtobool(com_s)
+            spells = spells.filter(concentration=com_s_bool)
+
+        # conc will either be "true", "false" or ""(empty string)
+        com_m = request.POST.get("com_m", None)
+        if com_m:
+            com_m_bool = util.strtobool(com_m)
+            spells = spells.filter(concentration=com_m_bool)
+
         search = request.POST.get("search", None)
         if search:
             spells = spells.filter(name__icontains=search)
