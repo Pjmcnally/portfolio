@@ -82,8 +82,11 @@ function loadContent () {
         url: "/spellbook/spells",
         data: {
             class: clss,
-            ritual: $("#rit-btns > .btn.active").val(),
-            conc: $("#conc-btns > .btn.active").val(),
+            rit: $("#rit-btn").val(),
+            con: $("#con-btn").val(),
+            com_v: $("#v-btn").val(),
+            com_s: $("#s-btn").val(),
+            com_m: $("#m-btn").val(),
             search: $("#search-input").val(),
         },
         success: function(data){

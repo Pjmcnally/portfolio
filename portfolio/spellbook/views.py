@@ -43,13 +43,13 @@ def spells(request):
             spells = spells.filter(clss=class_obj)
 
         # ritual will either be "true", "false" or ""(empty string)
-        ritual = request.POST.get("ritual", None)
+        ritual = request.POST.get("rit", None)
         if ritual:
             rit_bool = util.strtobool(ritual)
             spells = spells.filter(ritual=rit_bool)
 
         # conc will either be "true", "false" or ""(empty string)
-        conc = request.POST.get("conc", None)
+        conc = request.POST.get("con", None)
         if conc:
             conc_bool = util.strtobool(conc)
             spells = spells.filter(concentration=conc_bool)
