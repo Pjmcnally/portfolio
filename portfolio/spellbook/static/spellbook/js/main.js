@@ -57,9 +57,9 @@ $(".btn").on("click", function(event) {
 
     var val = $(this).val();
     if (val === "") {
-        $(this).val("yes");
-    } else if (val === "yes") {
-        $(this).val("no");
+        $(this).val("true");
+    } else if (val === "true") {
+        $(this).val("false");
     } else {
         $(this).val("");
     }
