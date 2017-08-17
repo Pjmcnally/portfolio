@@ -53,8 +53,7 @@ $("#search-input").on("input", function(event) {
 
 // event listener to load content when ritual checkbox value changes
 $(".btn").on("click", function(event) {
-    $(this).siblings().removeClass("active");
-    $(event.target).addClass('active');
+    event.target.blur();
     removeHash();
     loadContent();
 });
