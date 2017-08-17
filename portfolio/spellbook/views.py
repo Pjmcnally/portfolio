@@ -56,21 +56,24 @@ def spells(request):
 
         # conc will either be "true", "false" or ""(empty string)
         com_v = request.POST.get("com_v", None)
-        if com_v:
-            com_v_bool = util.strtobool(com_v)
-            spells = spells.filter(concentration=com_v_bool)
+        if com_v == "true":
+            spells = spells.filter(component__short_name__contains="v")
+        elif com_v == "false":
+            spells = spells.exclude(component__short_name__contains="v")
 
         # conc will either be "true", "false" or ""(empty string)
         com_s = request.POST.get("com_s", None)
-        if com_s:
-            com_s_bool = util.strtobool(com_s)
-            spells = spells.filter(concentration=com_s_bool)
+        if com_s == "true":
+            spells = spells.filter(component__short_name__contains="s")
+        elif com_s == "false":
+            spells = spells.exclude(component__short_name__contains="s")
 
         # conc will either be "true", "false" or ""(empty string)
         com_m = request.POST.get("com_m", None)
-        if com_m:
-            com_m_bool = util.strtobool(com_m)
-            spells = spells.filter(concentration=com_m_bool)
+        if com_m == "true":
+            spells = spells.filter(component__short_name__contains="m")
+        elif com_m == "false":
+            spells = spells.exclude(component__short_name__contains="m")
 
         search = request.POST.get("search", None)
         if search:
