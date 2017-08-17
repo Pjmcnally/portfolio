@@ -55,14 +55,21 @@ $("#search-input").on("input", function(event) {
 $(".btn").on("click", function(event) {
     event.target.blur();
 
-    var val = $(this).val();
-    if (val === "") {
-        $(this).val("true");
-    } else if (val === "true") {
-        $(this).val("false");
+    console.log(this.id);
+
+    if ((this).id === "reset-btn") {
+        $(".btn").val("");
     } else {
-        $(this).val("");
+        var val = $(this).val();
+        if (val === "") {
+            $(this).val("true");
+        } else if (val === "true") {
+            $(this).val("false");
+        } else {
+            $(this).val("");
+        }
     }
+
     removeHash();
     loadContent();
 });
