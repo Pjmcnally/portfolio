@@ -38,26 +38,24 @@
     <div class="row">
       <div class="col-md-6 spell-container">
         <div class="spell-block">
-          <h2 id="search" class="fixed-anchor spell-level-header">Search</h2>
-          <form id="search-form">
-            <input id="search-input" class="form-control" type="text" name="search" placeholder="Search...">
-          </form>
-          <div class="adv-search">
-            <div id="ritual" class="search-option">
-              <p>Ritual:</p>
-              <div id="rit-btns" class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-default" value="false">N</button>
-                <button type="button" class="btn btn-default active" value="">N/A</button>
-                <button type="button" class="btn btn-default" value ="true">Y</button>
+          <div class="search">
+            <h2 id="search" class="fixed-anchor spell-level-header">Search</h2>
+            <form id="search-form">
+              <input id="search-input" class="form-control" type="text" name="search" placeholder="Search...">
+            </form>
+          </div>
+          <div id="adv-search">
+            <h2 id="adv-search" class="fixed-anchor spell-level-header">Advanced Search Options</h2>
+            <button id="rit-btn" type="button" class="btn btn-default" value="">Ritual</button>
+            <button id="con-btn" type="button" class="btn btn-default" value="">Concentration</button>
+            <div id="components" class="search-option">
+              <p>Components:</p>
+              <div id="comp-btns" class="btn-group btn-group-sm" role="group">
+                <button id="v-btn" type="button" class="btn btn-default" value="">V</button>
+                <button id="s-btn" type="button" class="btn btn-default" value="">S</button>
+                <button id="m-btn" type="button" class="btn btn-default" value="">M</button>
               </div>
-            </div>
-            <div id="concentration" class="search-option">
-              <p>Concentration:</p>
-              <div id="conc-btns" class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-default" value="false">N</button>
-                <button type="button" class="btn btn-default active" value="">N/A</button>
-                <button type="button" class="btn btn-default" value ="true">Y</button>
-              </div>
+              <button id="reset-btn" type="button" class="btn btn-default" value="">Reset All</button>
             </div>
           </div>
         <!-- <a href="random"><h2> Random spell </h2></a> -->

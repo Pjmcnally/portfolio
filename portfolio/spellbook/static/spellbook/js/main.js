@@ -53,8 +53,23 @@ $("#search-input").on("input", function(event) {
 
 // event listener to load content when ritual checkbox value changes
 $(".btn").on("click", function(event) {
-    $(this).siblings().removeClass("active");
-    $(event.target).addClass('active');
+    event.target.blur();
+
+    console.log(this.id);
+
+    if ((this).id === "reset-btn") {
+        $(".btn").val("");
+    } else {
+        var val = $(this).val();
+        if (val === "") {
+            $(this).val("true");
+        } else if (val === "true") {
+            $(this).val("false");
+        } else {
+            $(this).val("");
+        }
+    }
+
     removeHash();
     loadContent();
 });
@@ -74,8 +89,11 @@ function loadContent () {
         url: "/spellbook/spells",
         data: {
             class: clss,
-            ritual: $("#rit-btns > .btn.active").val(),
-            conc: $("#conc-btns > .btn.active").val(),
+            rit: $("#rit-btn").val(),
+            con: $("#con-btn").val(),
+            com_v: $("#v-btn").val(),
+            com_s: $("#s-btn").val(),
+            com_m: $("#m-btn").val(),
             search: $("#search-input").val(),
         },
         success: function(data){
