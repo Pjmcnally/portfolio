@@ -54,6 +54,15 @@ $("#search-input").on("input", function(event) {
 // event listener to load content when ritual checkbox value changes
 $(".btn").on("click", function(event) {
     event.target.blur();
+
+    var val = $(this).val();
+    if (val === "") {
+        $(this).val("yes");
+    } else if (val === "yes") {
+        $(this).val("no");
+    } else {
+        $(this).val("");
+    }
     removeHash();
     loadContent();
 });
