@@ -35,7 +35,7 @@ from django.utils.text import slugify  # noqa
 def add_player_code_data():
     file = '../players/playercodes.txt'
     with open(file) as f:
-        players = f.readlines()
+        players = f.readlines()[1:]  # Skip file header
 
     for player in players:
         player = player.strip().split(',')
