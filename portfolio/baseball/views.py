@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Player
 
 
 # Create your views here.
@@ -10,5 +11,5 @@ def temp(request):
 
 
 def players(request):
-    context = {'message': 'This is where players will be listed'}
-    return render(request, "baseball/baseball_base.html", context)
+    context = {'players': Player.objects.all()}
+    return render(request, "baseball/players.html", context)
