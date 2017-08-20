@@ -41,7 +41,9 @@ def add_player_code_data():
 
     obj, created = Player.object.get_or_create(
         last_name=player[0],
-        first_name=player[1])
+        first_name=player[1],
+        ret_code=player[2],
+        first_appearance=player[3])
 
 
 def main():
