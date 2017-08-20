@@ -1,0 +1,10 @@
+{% extends parent_template|default:"base.html" %}
+{% load staticfiles %}
+
+
+
+{% block content %}
+  {% for player in players %}
+    <p>{{player.first_name}} {{player.last_name}}</p>
+  {% endfor %}
+{% endblock %}
