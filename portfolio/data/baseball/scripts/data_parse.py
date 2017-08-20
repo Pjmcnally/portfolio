@@ -18,6 +18,7 @@ To Do:
 # and variables so that this script can directly interact with models/database.
 import os
 import sys
+from datetime import datetime as dt
 proj_path = "/home/pjmcnally/programming/portfolio/portfolio/"
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portfolio.settings")
 sys.path.append(proj_path)
@@ -39,11 +40,18 @@ def add_player_code_data():
     for player in players:
         player = player.strip().split(',')
 
-    obj, created = Player.object.get_or_create(
-        last_name=player[0],
-        first_name=player[1],
-        ret_code=player[2],
-        first_appearance=player[3])
+    f_name = player[0]
+    l_name = player[1]
+    ret_code = player[2]
+    date = dt.strptime(player[3], "%d/%m/%Y").strftime('%Y-%m-%d')
+
+    obj, created = Player.objects.get_or_create(
+        last_name=f_name,
+        first_name=l_name,
+        ret_code=ret_code,
+        first_appearance=date)
+
+    print(obj)
 
 
 def main():
