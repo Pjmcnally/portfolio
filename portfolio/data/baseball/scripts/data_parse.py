@@ -40,18 +40,18 @@ def add_player_code_data():
     for player in players:
         player = player.strip().split(',')
 
-    f_name = player[0]
-    l_name = player[1]
-    ret_code = player[2]
-    date = dt.strptime(player[3], "%d/%m/%Y").strftime('%Y-%m-%d')
+        f_name = player[0]
+        l_name = player[1]
+        ret_code = player[2]
+        date = dt.strptime(player[3], "%d/%m/%Y").strftime('%Y-%m-%d')
 
-    obj, created = Player.objects.get_or_create(
-        last_name=f_name,
-        first_name=l_name,
-        ret_code=ret_code,
-        first_appearance=date)
+        obj, created = Player.objects.get_or_create(
+            last_name=f_name,
+            first_name=l_name,
+            ret_code=ret_code,
+            debut=date)
 
-    print(obj)
+        print(obj)
 
 
 def main():
