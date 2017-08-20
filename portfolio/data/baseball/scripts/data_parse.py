@@ -30,9 +30,22 @@ import re # noqa
 from baseball.models import (Player)   # noqa
 from django.utils.text import slugify  # noqa
 
+
+def add_player_code_data():
+    file = '../players/playercodes.txt'
+    with open(file) as f:
+        players = f.readlines()
+
+    for player in players:
+        player = player.strip().split(',')
+
+    obj, created = Player.object.get_or_create(
+        last_name=player[0],
+        first_name=player[1])
+
+
 def main():
-    data_path = '../../baseball/data'
-    data_ext = ['.txt']
+    add_player_code_data()
 
 
 if __name__ == '__main__':

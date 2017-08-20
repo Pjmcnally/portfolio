@@ -6,6 +6,7 @@ class Player(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     ret_code = models.CharField(max_length=8, unique=True)
+    first_appearance = models.DateField()
     # slug = models.SlugField(
     #     max_length=50,
     #     unique=True,
