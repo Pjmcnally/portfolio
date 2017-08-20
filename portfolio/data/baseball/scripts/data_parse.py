@@ -43,7 +43,7 @@ def add_player_code_data():
         f_name = player[0]
         l_name = player[1]
         ret_code = player[2]
-        date = dt.strptime(player[3], "%d/%m/%Y").strftime('%Y-%m-%d')
+        date = dt.strptime(player[3], "%m/%d/%Y").strftime('%Y-%m-%d')
 
         obj, created = Player.objects.get_or_create(
             last_name=f_name,
