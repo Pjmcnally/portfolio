@@ -7,3 +7,8 @@ def temp(request):
         """This is a temporary landing pages for my Baseball project.
         This site is currently under development and will appear here once complete"""}
     return render(request, "baseball/baseball_base.html", context)
+
+
+def players(request):
+    context = {'message': 'This is where players will be listed'}
+    return render(request, "baseball/baseball_base.html", context)
