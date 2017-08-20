@@ -2,27 +2,15 @@
 
 """A module to parse data and save it to a datase
 
-This module is designed to parse the files stored in data/markdown data.
-It parses these files to extract spell data from D&D 5th edition and then
-loads the data in to the database for this django project.
-
-The markdown files were originally downloaded from repo located at:
-https://github.com/thebombzen/grimoire.  However, they have been substatially
-modified as part of this project.
+This module is designed to parse the files stored in the data folder.
+These files originated on the retrosheets webside and are stored as comma
+seperated value .txt files.
 
 Example:
-    $ python data_markdown_parse.py
+    $ python data_parse.py
 
 To Do:
-    This was built as a one off to parse the files and load the database.
-    There is much that could be done to improve it however, I feel it is
-    already obsolete.
-
-    If I return to it here is a list of items to consider/implement:
-        * Testing
-        * Implement class w/functions as methods
-        * remove variables from repetitively called functions
-        * Impletment error checking
+    This is a work in progress.  Everything needs to be done.
 
 """
 
@@ -31,7 +19,7 @@ To Do:
 import os
 import sys
 proj_path = "/home/pjmcnally/programming/portfolio/portfolio/"
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dnd.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portfolio.settings")
 sys.path.append(proj_path)
 import django  # noqa
 django.setup()
@@ -39,9 +27,7 @@ django.setup()
 
 # Lines 12-17 are normal imports. "# noqa" disables the linter for that line.
 import re # noqa
-from spellbook.models import (  # noqa
-    CastingTime, Clss, Component, Duration, Domain, Level, Range, School,
-    Source, SpellSource, Spell, SubDomain)
+from baseball.models import (Player)
 from data_utils import get_file_list   # noqa
 from django.utils.text import slugify  # noqa
 
@@ -382,7 +368,7 @@ def create_spell(content):
 
 
 def main():
-    data_path = '../../data'
+    data_path = '../../spellbook/data'
     data_ext = ['.md']
 
     x = 0
