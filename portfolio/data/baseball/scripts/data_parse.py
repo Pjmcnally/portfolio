@@ -32,7 +32,7 @@ from baseball.models import (Player)   # noqa
 from django.utils.text import slugify  # noqa
 
 
-def add_player_code_data():
+def add_player_data():
     file = '../players/playercodes.txt'
     with open(file) as f:
         players = f.readlines()[1:]  # Skip file header
@@ -49,13 +49,44 @@ def add_player_code_data():
             last_name=f_name,
             first_name=l_name,
             ret_code=ret_code,
-            debut=date)
+            debut=date
+        )
+
+        print(obj)
+
+
+def add_park_data():
+    file = '../parks/parkcode.txt'
+    with open(file) as f:
+        parks = f.readlines()[1:]  # Skip file header
+
+    for park in parks:
+        park = park.strip().split(',')
+
+        ret_code = park[0]
+        name = park[1]
+        aka = (park[2] or None)
+        city = park[3]
+        state = park[4]
+        start = dt.strptime(park[5], "%m/%d/%Y").strftime('%Y-%m-%d')
+        end = dt.strptime(park[6], "%m/%d/%Y").strftime('%Y-%m-%d')
+
+        obj, created = Player.objects.get_or_create(
+            ret_code=ret_code,
+            name=name,
+            aka=aka,
+            city=city,
+            state=state,
+            start=start,
+            end=end,
+        )
 
         print(obj)
 
 
 def main():
-    add_player_code_data()
+    # add_player_data()
+    add_park_data()
 
 
 if __name__ == '__main__':
