@@ -38,8 +38,7 @@ class Park(models.Model):
     end = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
 
     def __str__(self):
-        return "{}: {} in {}, {}".format(
-            self.id,
+        return "{} in {}, {}".format(
             self.name,
             self.city,
             self.state
