@@ -69,7 +69,10 @@ def add_park_data():
         city = park[3]
         state = park[4]
         start = dt.strptime(park[5], "%m/%d/%Y").strftime('%Y-%m-%d')
-        end = dt.strptime(park[6], "%m/%d/%Y").strftime('%Y-%m-%d')
+        if (park[6]):
+            end = dt.strptime(park[6], "%m/%d/%Y").strftime('%Y-%m-%d')
+        else:
+            end = None
 
         obj, created = Park.objects.get_or_create(
             ret_code=ret_code,
