@@ -28,7 +28,7 @@ django.setup()
 
 # Lines 12-17 are normal imports. "# noqa" disables the linter for that line.
 import re # noqa
-from baseball.models import (Player)   # noqa
+from baseball.models import (Player, Park)   # noqa
 from django.utils.text import slugify  # noqa
 
 
@@ -71,7 +71,7 @@ def add_park_data():
         start = dt.strptime(park[5], "%m/%d/%Y").strftime('%Y-%m-%d')
         end = dt.strptime(park[6], "%m/%d/%Y").strftime('%Y-%m-%d')
 
-        obj, created = Player.objects.get_or_create(
+        obj, created = Park.objects.get_or_create(
             ret_code=ret_code,
             name=name,
             aka=aka,
