@@ -31,7 +31,7 @@ class Park(models.Model):
     """ Model for location data """
     ret_code = models.CharField(max_length=5, unique=True)
     name = models.CharField(max_length=100)
-    aka = models.CharField(max_length=100, blank=True)
+    aka = models.CharField(max_length=100, blank=True, null=True)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     start = models.DateField(auto_now=False, auto_now_add=False)
