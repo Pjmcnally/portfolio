@@ -4,9 +4,9 @@ from django.db import models
 # Create your models here.
 class Player(models.Model):
     """ A model for player data """
+    ret_code = models.CharField(max_length=8, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    ret_code = models.CharField(max_length=8, unique=True)
     debut = models.DateField()
     # throws = models.CharField(max_length=1, blank=True)
     # bats = models.CharField(max_length=1, blank=True)
