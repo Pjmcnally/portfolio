@@ -25,3 +25,22 @@ class Player(models.Model):
     sorted after z I believe it is an SQLite issue) """
     # class Meta:
     #     ordering = ['last_name', 'first_name']
+
+
+class Park(models.Model):
+    """ Model for location data """
+    ret_code = models.CharField(max_length=5, unique=True)
+    name = models.CharField(max_length=100)
+    aka = models.CharField(max_length=100, blank=True)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=50)
+    start = models.DateField(auto_now=False, auto_now_add=False)
+    end = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
+
+    def __str__(self):
+        return "{}: {} in {}, {}".format(
+            self.id,
+            self.name,
+            self.city,
+            self.state
+        )
