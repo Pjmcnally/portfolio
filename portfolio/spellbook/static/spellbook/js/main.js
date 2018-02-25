@@ -52,7 +52,7 @@ $("#search-input").on("input", function(event) {
 });
 
 // event listener to load content when ritual checkbox value changes
-$(".btn").on("click", function(event) {
+$(".adv-search button").on("click", function(event) {
     event.target.blur();
 
     console.log(this.id);
