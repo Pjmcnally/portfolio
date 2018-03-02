@@ -33,6 +33,22 @@ def spell_detail(request, slug):
 
 
 def spells(request):
+    """ TODO: Revamp this so that multiple classes can be specified as part of
+        the search.
+
+        Approximate code to do this:
+
+        # In the imports
+        from django.db.models import Q
+
+        # In the function
+        classes = ["Druid", "Warlock"]
+        query = Q()
+        for clss in classes:
+            query |=  Q(clss__name__contains=clss)
+
+        spells = Spell.objects.filter(query).distinct()
+    """
     if request.method == 'POST':
         spells = Spell.objects.filter(source__public=True)
 
