@@ -118,8 +118,6 @@ def spells(request):
         return HttpResponse("No spells found!")
 
 
-
-
 def random(request):
     """ Function to redirect to random spell page """
     r = RandomJson.as_view()(request)
