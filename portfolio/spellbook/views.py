@@ -34,88 +34,90 @@ def spell_detail(request, slug):
 
 
 def spells(request):
-    if request.method == 'POST':
-        spells = Spell.objects.filter(source__public=True)
+    # If not post request reject
+    if request.method != 'POST':
+        return HttpResponse("")
 
-        clss_include = request.POST.get("class_inc").split()
-        print(clss_include)
-        if clss_include:
-            print("including")
-            include = Q()
-            for clss in clss_include:
-                include |= Q(clss__slug__contains=clss)
-            spells = spells.filter(include).distinct()
+    spells = Spell.objects.filter(source__public=True)
 
-        clss_exclude = request.POST.get("class_exc").split()
-        print(clss_exclude)
-        if clss_exclude:
-            exclude = Q()
-            for clss in clss_exclude:
-                exclude |= Q(clss__slug__contains=clss)
-            spells = spells.exclude(exclude)
+    clss_include = request.POST.get("class_inc").split()
+    print(clss_include)
+    if clss_include:
+        print("including")
+        include = Q()
+        for clss in clss_include:
+            include |= Q(clss__slug__contains=clss)
+        spells = spells.filter(include).distinct()
 
-        # ritual will either be "true", "false" or ""(empty string)
-        ritual = request.POST.get("rit", None)
-        if ritual:
-            rit_bool = util.strtobool(ritual)
-            spells = spells.filter(ritual=rit_bool)
+    clss_exclude = request.POST.get("class_exc").split()
+    print(clss_exclude)
+    if clss_exclude:
+        exclude = Q()
+        for clss in clss_exclude:
+            exclude |= Q(clss__slug__contains=clss)
+        spells = spells.exclude(exclude)
 
-        # conc will either be "true", "false" or ""(empty string)
-        conc = request.POST.get("con", None)
-        if conc:
-            conc_bool = util.strtobool(conc)
-            spells = spells.filter(concentration=conc_bool)
+    # ritual will either be "true", "false" or ""(empty string)
+    ritual = request.POST.get("rit", None)
+    if ritual:
+        rit_bool = util.strtobool(ritual)
+        spells = spells.filter(ritual=rit_bool)
 
-        # The next 3 sections are for the 3 components V, S, M
-        # com_v will either be "true", "false" or ""(empty string)
-        com_v = request.POST.get("com_v", None)
-        if com_v == "true":
-            spells = spells.filter(component__short_name__contains="v")
-        elif com_v == "false":
-            spells = spells.exclude(component__short_name__contains="v")
+    # conc will either be "true", "false" or ""(empty string)
+    conc = request.POST.get("con", None)
+    if conc:
+        conc_bool = util.strtobool(conc)
+        spells = spells.filter(concentration=conc_bool)
 
-        # com_s will either be "true", "false" or ""(empty string)
-        com_s = request.POST.get("com_s", None)
-        if com_s == "true":
-            spells = spells.filter(component__short_name__contains="s")
-        elif com_s == "false":
-            spells = spells.exclude(component__short_name__contains="s")
+    # The next 3 sections are for the 3 components V, S, M
+    # com_v will either be "true", "false" or ""(empty string)
+    com_v = request.POST.get("com_v", None)
+    if com_v == "true":
+        spells = spells.filter(component__short_name__contains="v")
+    elif com_v == "false":
+        spells = spells.exclude(component__short_name__contains="v")
 
-        # com_m either be "true", "false" or ""(empty string)
-        com_m = request.POST.get("com_m", None)
-        if com_m == "true":
-            spells = spells.filter(component__short_name__contains="m")
-        elif com_m == "false":
-            spells = spells.exclude(component__short_name__contains="m")
+    # com_s will either be "true", "false" or ""(empty string)
+    com_s = request.POST.get("com_s", None)
+    if com_s == "true":
+        spells = spells.filter(component__short_name__contains="s")
+    elif com_s == "false":
+        spells = spells.exclude(component__short_name__contains="s")
 
-        search = request.POST.get("search", None)
-        if search:
-            spells = spells.filter(name__icontains=search)
+    # com_m either be "true", "false" or ""(empty string)
+    com_m = request.POST.get("com_m", None)
+    if com_m == "true":
+        spells = spells.filter(component__short_name__contains="m")
+    elif com_m == "false":
+        spells = spells.exclude(component__short_name__contains="m")
 
-        if spells:
-            spell_dict = {
-                0: spells.filter(level__num=0),
-                1: spells.filter(level__num=1),
-                2: spells.filter(level__num=2),
-                3: spells.filter(level__num=3),
-                4: spells.filter(level__num=4),
-                5: spells.filter(level__num=5),
-                6: spells.filter(level__num=6),
-                7: spells.filter(level__num=7),
-                8: spells.filter(level__num=8),
-                9: spells.filter(level__num=9),
-            }
+    search = request.POST.get("search", None)
+    if search:
+        spells = spells.filter(name__icontains=search)
 
-            context = {
-                'spells': spell_dict}
+    if spells:
+        spell_dict = {
+            0: spells.filter(level__num=0),
+            1: spells.filter(level__num=1),
+            2: spells.filter(level__num=2),
+            3: spells.filter(level__num=3),
+            4: spells.filter(level__num=4),
+            5: spells.filter(level__num=5),
+            6: spells.filter(level__num=6),
+            7: spells.filter(level__num=7),
+            8: spells.filter(level__num=8),
+            9: spells.filter(level__num=9),
+        }
 
-            return render(request, 'spellbook/spells.html', context)
+        context = {
+            'spells': spell_dict}
 
-        else:
-            return HttpResponse("No spells found!")
+        return render(request, 'spellbook/spells.html', context)
 
     else:
-        return HttpResponse("")
+        return HttpResponse("No spells found!")
+
+
 
 
 def random(request):
