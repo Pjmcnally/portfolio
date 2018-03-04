@@ -16,7 +16,7 @@
         </div>
         <div id="navbar2" class="navbar-collapse collapse">
           <ul class="nav navbar-nav level-links in-nav-text">
-            <li><a href="#search" class="level-link hidden" id="ll-search">Search</a></li>
+            <li><a href="#text-header" class="level-link hidden" id="ll-search">Search</a></li>
             <li><a href="#cantrip" class="level-link hidden" id="ll-cantrip">Cantrips</a></li>
             <li><a href="#level-1" class="level-link hidden" id="ll-level-1">1</a></li>
             <li><a href="#level-2" class="level-link hidden" id="ll-level-2">2</a></li>
@@ -36,17 +36,29 @@
 {% block content %}
   <div class="container">
     <div class="row">
-      <div class="col-md-6 spell-container">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 spell-container">
         <div class="spell-block">
-          <div class="search">
-            <h2 id="search" class="fixed-anchor spell-level-header">Search</h2>
+          <div class="search text-search">
+            <h2 id="text-header" class="fixed-anchor spell-level-header">Search</h2>
             <form id="search-form">
               <input id="search-input" class="form-control" type="text" name="search" placeholder="Search...">
             </form>
-            <!-- <button id="adv-search-btn" type="button" class="btn btn-default">Show Advanced Search Options</button> -->
           </div>
-          <div class="adv-search" class="hidden">
-            <h2 id="adv-search" class="fixed-anchor spell-level-header">Advanced Search Options</h2>
+          <div class="search class-search">
+            <h2 id="class-header" class="fixed-anchor spell-level-header">
+              Classes
+              <button id="reset-class-btn" type="button" class="btn btn-default pull-right" value="">Reset</button>
+            </h2>
+            {% for class in classes %}
+              <button id="{{ class.slug }}" type="button" class="btn btn-default class-btn" value="">{{ class.name|title }}</button>
+            {% endfor %}
+
+          </div>
+          <div class="search adv-search">
+            <h2 id="adv-header" class="fixed-anchor spell-level-header">
+              Advanced Options
+              <button id="reset-adv-btn" type="button" class="btn btn-default pull-right" value="">Reset</button>
+            </h2>
             <button id="rit-btn" type="button" class="btn btn-default" value="">Ritual</button>
             <button id="con-btn" type="button" class="btn btn-default" value="">Concentration</button>
             <div id="components" class="search-option">
@@ -56,7 +68,7 @@
                 <button id="s-btn" type="button" class="btn btn-default" value="">S</button>
                 <button id="m-btn" type="button" class="btn btn-default" value="">M</button>
               </div>
-              <button id="reset-btn" type="button" class="btn btn-default" value="">Reset All</button>
+
             </div>
           </div>
         <!-- <a href="random"><h2> Random spell </h2></a> -->

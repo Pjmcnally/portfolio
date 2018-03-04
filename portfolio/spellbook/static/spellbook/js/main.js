@@ -52,13 +52,13 @@ $("#search-input").on("input", function(event) {
 });
 
 // event listener to load content when ritual checkbox value changes
-$(".adv-search button").on("click", function(event) {
+$(".search button").on("click", function(event) {
     event.target.blur();
 
-    console.log(this.id);
-
-    if ((this).id === "reset-btn") {
-        $(".btn").val("");
+    if ((this).id === "reset-adv-btn") {
+        $(".adv-search .btn").val("");
+    } else if ((this).id === "reset-class-btn") {
+        $(".class-search .btn").val("");
     } else {
         var val = $(this).val();
         if (val === "") {
@@ -80,15 +80,25 @@ function removeHash () {
     }
 }
 
+// Gets class buttons by boolean value and returns list
+function getClassesString (bool) {
+    classes = []
+    filter = ".class-btn[value='" + bool + "']"
+    $(filter).each(function(){
+        classes.push($(this).attr('id'))
+    })
+
+    return classes
+}
+
 // Load content from django database into page.
 function loadContent () {
-    var _href = window.location.pathname;
-    var clss = parseClassRef(_href);
     $.ajax({
         method: "post",
         url: "/spellbook/spells",
         data: {
-            class: clss,
+            class_inc: getClassesString(true).join(" "),
+            class_exc: getClassesString(false).join(" "),
             rit: $("#rit-btn").val(),
             con: $("#con-btn").val(),
             com_v: $("#v-btn").val(),
@@ -98,7 +108,6 @@ function loadContent () {
         },
         success: function(data){
             $("#content-box").html(data);
-            switchActive(clss);
             showLevelLink();
             scrollTopOrHash();
         }
@@ -122,28 +131,6 @@ function showLevelLink() {
         var link = "#ll-" + value.id;
         $(link).removeClass("hidden");
     });
-}
-
-// Parses class string from href.
-function parseClassRef (_href) {
-    var clssRe = /class\/([\w]+)/;
-    try {
-        clss = _href.match(clssRe)[1];
-        return clss;
-    } catch(err) {
-        return "";
-    }
-}
-
-// Switches active higlighted nav button in main nav.
-function switchActive (clss) {
-    $(".class-link").parent().removeClass("active");
-    if (clss) {
-        clss_id = "#" + clss;
-    } else {
-        clss_id = "#all";
-    }
-    $(clss_id).parent().addClass("active");
 }
 
 /* All functions belowed copied from Django documentation.

@@ -2,9 +2,11 @@
 
 body {
   padding-top: 100px;
+  min-width: 320px;
 }
 
 .spell-level-header {
+    padding-bottom: 2px;
     border-bottom: 2px solid #0A4958;
 }
 
@@ -24,7 +26,7 @@ body {
 
 .internal-navbar {
     margin-top: 50px;
-    border-width: 0; 
+    border-width: 0;
     background-color: white;
 }
 
@@ -118,7 +120,6 @@ body {
 .spell-block ul {
     list-style-type: none;
     padding-left: 1em;
-
 }
 
 /* This section impacts the advanced search section */
@@ -131,20 +132,20 @@ body {
     display: inline-block;
 }
 
-.adv-search {
-    margin-top: 15px;
-}
-
-.adv-search button[value="true"] {
+.search button[value="true"] {
     border-color: green;
     -moz-box-shadow:    inset 0 0 8px 2px green;
     -webkit-box-shadow: inset 0 0 8px 2px green;
     box-shadow:         inset 0 0 8px 2px green;
 }
 
-.adv-search button[value="false"] {
+.search button[value="false"] {
     border-color: red;
     -moz-box-shadow:    inset 0 0 8px 2px red;
     -webkit-box-shadow: inset 0 0 8px 2px red;
     box-shadow:         inset 0 0 8px 2px red;
+}
+
+.search button {
+    margin-bottom: 5px;
 }
