@@ -14,16 +14,15 @@ from .models import Clss, Spell
 
 
 @ensure_csrf_cookie
-def spell_list(request, slug=None):
+def spell_list(request):
     """ function to render spell list page """
-    class_obj = None
-    classes = Clss.objects.all()  # get all classes for navbar
 
-    context = {
-        'class': class_obj,
-        'classes': classes}
-
+    # get all classes for navbar
+    context = {'classes': Clss.objects.all()}
     return render(request, 'spellbook/spell_list.html', context)
+
+def spell_list_redirect(request):
+    return redirect('sb_spell_list')
 
 
 def spell_detail(request, slug):
