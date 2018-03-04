@@ -2,6 +2,7 @@
 
 body {
   padding-top: 100px;
+  min-width: 320px;
 }
 
 .spell-level-header {
@@ -119,7 +120,6 @@ body {
 .spell-block ul {
     list-style-type: none;
     padding-left: 1em;
-
 }
 
 /* This section impacts the advanced search section */
@@ -144,4 +144,8 @@ body {
     -moz-box-shadow:    inset 0 0 8px 2px red;
     -webkit-box-shadow: inset 0 0 8px 2px red;
     box-shadow:         inset 0 0 8px 2px red;
+}
+
+.search button {
+    margin-bottom: 5px;
 }
