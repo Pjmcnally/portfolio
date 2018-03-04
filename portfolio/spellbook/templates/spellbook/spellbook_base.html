@@ -30,22 +30,14 @@
   <nav class="navbar main-navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button type="button" id="nav-toggle-main" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<!--         <button type="button" id="nav-toggle-main" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
+        </button> -->
         <a href="/" class="navbar-brand" title="pjmcnally.net"><img class="site-logo" src="{% static '/site/icon/logo.svg' %}"></a>
         <a class="navbar-brand" href="/spellbook/">Spellbook</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a class="class-link" id="all" href="/spellbook/">All</a></li>
-          {% for class in classes %}
-            <li><a class="class-link" id="{{ class.slug }}" href="{{ class.get_absolute_url }}">{{ class.name|title }}</a></li>
-          {% endfor %}
-        </ul>
       </div>
     </div>
   </nav>
