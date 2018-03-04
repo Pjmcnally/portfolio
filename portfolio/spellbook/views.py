@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
@@ -33,30 +34,25 @@ def spell_detail(request, slug):
 
 
 def spells(request):
-    """ TODO: Revamp this so that multiple classes can be specified as part of
-        the search.
-
-        Approximate code to do this:
-
-        # In the imports
-        from django.db.models import Q
-
-        # In the function
-        classes = ["Druid", "Warlock"]
-        query = Q()
-        for clss in classes:
-            query |=  Q(clss__name__contains=clss)
-
-        spells = Spell.objects.filter(query).distinct()
-    """
     if request.method == 'POST':
         spells = Spell.objects.filter(source__public=True)
 
-        # clss with either be provided or not
-        clss = request.POST.get("class", None)
-        if clss:
-            class_obj = Clss.objects.get(slug__iexact=clss)
-            spells = spells.filter(clss=class_obj)
+        clss_include = request.POST.get("class_inc").split()
+        print(clss_include)
+        if clss_include:
+            print("including")
+            include = Q()
+            for clss in clss_include:
+                include |= Q(clss__slug__contains=clss)
+            spells = spells.filter(include).distinct()
+
+        clss_exclude = request.POST.get("class_exc").split()
+        print(clss_exclude)
+        if clss_exclude:
+            exclude = Q()
+            for clss in clss_exclude:
+                exclude |= Q(clss__slug__contains=clss)
+            spells = spells.exclude(exclude)
 
         # ritual will either be "true", "false" or ""(empty string)
         ritual = request.POST.get("rit", None)
