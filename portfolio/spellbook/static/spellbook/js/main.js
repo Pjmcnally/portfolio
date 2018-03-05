@@ -6,38 +6,6 @@ $(window).on("popstate", function() {
     loadContent();
 });
 
-// Set listener to loadContent when nav link is clicked.
-$(function() {
-    if (Modernizr.history) {
-        // history is support.  Use cool method.
-
-        // hijack the nav click event
-        $(".class-link").on("click", function(event) {
-            event.preventDefault();
-            var _href = $(this).attr("href");
-
-            // change the url without a page refresh and add a history entry.
-            history.pushState(null, null, _href);
-
-            // load the content
-            loadContent();
-        });
-        // hijack the nav click event
-        $(".level-link").on("click", function(event) {
-            event.preventDefault();
-            var _href = $(this).attr("href");
-
-            // Change the url without a page refresh and add a history entry.
-            history.pushState(null, null, _href);
-
-            // Scroll to new hash.
-            scrollTopOrHash();
-        });
-    } else {
-        // History not supported.  Nothing Fancy here.
-    }
-});
-
 // event listener to intercept form submission and instead load content
 $("#search-form").on("submit", function(event) {
     event.preventDefault();
@@ -114,24 +82,15 @@ function loadContent () {
     });
 }
 
-function scrollTopOrHash () {
-    var hash = window.location.hash;
-    if (hash) {
-        $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
-    } else {
-        $('html,body').scrollTop(0);
-    }
-}
-
-// function to show active level links in internal nav-bar
-function showLevelLink() {
-    $(".level-link").addClass("hidden");
-    $("#ll-search").removeClass("hidden");
-    $.each($(".spell-level-header"), function (index, value) {
-        var link = "#ll-" + value.id;
-        $(link).removeClass("hidden");
-    });
-}
+// // function to show active level links in internal nav-bar
+// function showLevelLink() {
+//     $(".level-link").addClass("hidden");
+//     $("#ll-search").removeClass("hidden");
+//     $.each($(".spell-level-header"), function (index, value) {
+//         var link = "#ll-" + value.id;
+//         $(link).removeClass("hidden");
+//     });
+// }
 
 /* All functions belowed copied from Django documentation.
  * link = https://docs.djangoproject.com/en/1.10/ref/csrf/
