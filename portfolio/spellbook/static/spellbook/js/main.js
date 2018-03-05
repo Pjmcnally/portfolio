@@ -107,7 +107,7 @@ function loadContent () {
             search: $("#search-input").val(),
         },
         success: function(data){
-            $("#content-box").html(data);
+            $("#spell-block").html(data);
             showLevelLink();
             scrollTopOrHash();
         }
