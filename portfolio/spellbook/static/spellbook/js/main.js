@@ -72,16 +72,6 @@ function loadContent () {
     });
 }
 
-// // function to show active level links in internal nav-bar
-// function showLevelLink() {
-//     $(".level-link").addClass("hidden");
-//     $("#ll-search").removeClass("hidden");
-//     $.each($(".spell-level-header"), function (index, value) {
-//         var link = "#ll-" + value.id;
-//         $(link).removeClass("hidden");
-//     });
-// }
-
 /* All functions belowed copied from Django documentation.
  * link = https://docs.djangoproject.com/en/1.10/ref/csrf/
  * these functions ensure csrf token passed through with AJAX POST requests
