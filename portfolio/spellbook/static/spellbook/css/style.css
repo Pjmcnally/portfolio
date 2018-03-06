@@ -92,11 +92,6 @@ footer {
     text-align: center;
 }
 
-#spell-block ul {
-    list-style-type: none;
-    padding-left: 1em;
-}
-
 /* This section impacts the advanced search section */
 .search-option {
     display: inline-block;
