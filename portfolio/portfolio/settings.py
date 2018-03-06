@@ -138,3 +138,4 @@ STATIC_ROOT = local_settings.STATIC_ROOT
 
 # Security Settings
 SECURE_SSL_REDIRECT = True
+
