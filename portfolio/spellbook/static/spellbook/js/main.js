@@ -15,7 +15,6 @@ $("#search-form").on("submit", function(event) {
 // event listener to load content on value change in search field.
 $("#search-input").on("input", function(event) {
     event.preventDefault();
-    removeHash();
     loadContent();
 });
 
@@ -38,15 +37,8 @@ $(".search button").on("click", function(event) {
         }
     }
 
-    removeHash();
     loadContent();
 });
-
-function removeHash () {
-    if (window.location.hash) {
-        history.pushState(null, null, window.location.pathname + window.location.search);
-    }
-}
 
 // Gets class buttons by boolean value and returns list
 function getClassesString (bool) {
@@ -76,8 +68,6 @@ function loadContent () {
         },
         success: function(data){
             $("#spell-block").html(data);
-            showLevelLink();
-            scrollTopOrHash();
         }
     });
 }
