@@ -40,7 +40,6 @@ def spells(request):
     spells = Spell.objects.filter(source__public=True)
 
     clss_include = request.POST.get("class_inc").split()
-    print(clss_include)
     if clss_include:
         print("including")
         include = Q()
@@ -49,7 +48,6 @@ def spells(request):
         spells = spells.filter(include).distinct()
 
     clss_exclude = request.POST.get("class_exc").split()
-    print(clss_exclude)
     if clss_exclude:
         exclude = Q()
         for clss in clss_exclude:
