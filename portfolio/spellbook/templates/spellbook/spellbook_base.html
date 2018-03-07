@@ -21,6 +21,7 @@
 
 {% block links %}
   {{ block.super }}
+  <link href="https://fonts.googleapis.com/css?family=Lora|Mate+SC" rel="stylesheet">
   <!-- spellbook style sheet -->
   <link href="{% static 'spellbook/css/style.css' %}" rel="stylesheet">
 {% endblock %}
@@ -32,6 +33,4 @@
 
 {% block scripts %}
   {{ block.super }}
-  <!-- Javascript for site -->
-  <script src="{% static 'site/js/main.js' %}"></script>
 {% endblock %}
