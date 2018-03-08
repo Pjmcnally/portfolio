@@ -44,28 +44,33 @@ $(".search button").on("click", function(event) {
 function setSpellDetailListener () {
     // event listener to test spell link click
     $(".spell").on('click', function(event) {
-        cont = $(event.target).find(".spell-detail-content")
-        if (cont.hasClass('hidden')) {
-            loadSpellDetail(event)
+        divExists = ($(this).has(".spell-detail-content")).length
+
+        if (divExists) {
+            div = $(this).children(".spell-detail-content")
+            if(div.hasClass('hidden')) {
+                div.removeClass('hidden')
+            } else {
+                div.addClass('hidden')
+            }
         } else {
-            cont.addClass('hidden')
+            $(this).append('<div class="spell-detail-content"></div>')
+            loadSpellDetail($(this))
         }
     });
 }
 
-function loadSpellDetail (org_event) {
+function loadSpellDetail (target) {
     $.ajax({
         method: "post",
         url: "/spellbook/get_spell_detail",
         data: {
-            spell: $(org_event.target).attr('id'),
+            spell: target.attr('id'),
         },
         success: function(data){
-            console.log(data)
-            console.log(org_event.target)
-            cont = $(org_event.target).find(".spell-detail-content")
-            $(cont).html(data);
-            $(cont).removeClass("hidden")
+            div = $(target).children(".spell-detail-content")
+            $(div).html(data);
+            $(div).removeClass("hidden")
         }
     });
 }
