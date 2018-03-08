@@ -18,6 +18,7 @@ $("#search-input").on("input", function(event) {
     loadContent();
 });
 
+
 // event listener to load content when ritual checkbox value changes
 $(".search button").on("click", function(event) {
     event.target.blur();
@@ -39,6 +40,35 @@ $(".search button").on("click", function(event) {
 
     loadContent();
 });
+
+function setSpellDetailListener () {
+    // event listener to test spell link click
+    $(".spell").on('click', function(event) {
+        cont = $(event.target).find(".spell-detail-content")
+        if (cont.hasClass('hidden')) {
+            loadSpellDetail(event)
+        } else {
+            cont.addClass('hidden')
+        }
+    });
+}
+
+function loadSpellDetail (org_event) {
+    $.ajax({
+        method: "post",
+        url: "/spellbook/get_spell_detail",
+        data: {
+            spell: $(org_event.target).attr('id'),
+        },
+        success: function(data){
+            console.log(data)
+            console.log(org_event.target)
+            cont = $(org_event.target).find(".spell-detail-content")
+            $(cont).html(data);
+            $(cont).removeClass("hidden")
+        }
+    });
+}
 
 // Gets class buttons by boolean value and returns list
 function getClassesString (bool) {
@@ -68,6 +98,7 @@ function loadContent () {
         },
         success: function(data){
             $("#spell-block").html(data);
+            setSpellDetailListener()
         }
     });
 }
