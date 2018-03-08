@@ -1,6 +1,7 @@
+{% load spellbook_tags %}
+
 <!-- Returned in response to Ajax query -->
 <div class="spell-head">
-  <h1 class="spell-name">{{spell.name}}</h1>
   <p class="spell-school-level">
     {% if spell.level.num == 0 %}
       {{spell.school}} {{spell.level}} {% if spell.ritual %} (ritual) {% endif %}
