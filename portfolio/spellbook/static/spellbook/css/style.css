@@ -21,6 +21,10 @@ footer {
     text-align: center;
 }
 
+.spell-detail-content {
+    padding-left: 10px;
+    background-color: lightgrey;
+}
 .navbar-nav {
     display: inline-block;
     float: none;
