@@ -41,8 +41,8 @@ $(".search button").on("click", function(event) {
     loadContent();
 });
 
-function flipArrow(spell) {
-    arrow = $(spell).find(".fa")
+function flipArrow(elem) {
+    arrow = $(elem).find(".fa")
     if (arrow.hasClass("fa-angle-double-down")) {
         arrow.removeClass("fa-angle-double-down")
         arrow.addClass("fa-angle-double-up")
@@ -50,7 +50,14 @@ function flipArrow(spell) {
         arrow.removeClass("fa-angle-double-up")
         arrow.addClass("fa-angle-double-down")
     }
+}
 
+function showOrHide (elem) {
+    if (elem.hasClass("hidden")) {
+        elem.removeClass("hidden")
+    } else {
+        elem.addClass("hidden")
+    }
 }
 
 function setSpellDetailListener () {
@@ -64,16 +71,22 @@ function setSpellDetailListener () {
         spell = $(this).parent()
         content_div = spell.children(".spell-detail-content")
 
-        if (content_div.length & content_div.hasClass('hidden')) {
-            content_div.removeClass('hidden')
-        } else if (content_div.length) {
-            content_div.addClass('hidden')
+        if (content_div.length) {
+            showOrHide(content_div)
         } else {
             loadSpellDetail(spell)
         }
 
         flipArrow(spell)
     });
+}
+
+function setSpellHeaderListener () {
+    $(".spell-level-header").on('click', function(event) {
+        parent = $(event.target).parent()
+        showOrHide($(parent).children(".spell-list"))
+        flipArrow($(event.target))
+    })
 }
 
 function loadSpellDetail (target) {
@@ -118,6 +131,7 @@ function loadContent () {
         success: function(data){
             $("#spell-block").html(data);
             setSpellDetailListener()
+            setSpellHeaderListener()
         }
     });
 }
