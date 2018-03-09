@@ -25,6 +25,20 @@ footer {
     padding-left: 10px;
     background-color: lightgrey;
 }
+
+.spell-header:hover {
+    background-color: lightgrey;
+}
+
+.spell-header .fa {
+    display: none;
+    margin-left: 5px;
+}
+
+.spell-header:hover .fa {
+    display: inline;
+}
+
 .navbar-nav {
     display: inline-block;
     float: none;
