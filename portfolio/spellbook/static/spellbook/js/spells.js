@@ -41,22 +41,38 @@ $(".search button").on("click", function(event) {
     loadContent();
 });
 
+function flipArrow(spell) {
+    arrow = $(spell).find(".fa")
+    if (arrow.hasClass("fa-angle-double-down")) {
+        arrow.removeClass("fa-angle-double-down")
+        arrow.addClass("fa-angle-double-up")
+    } else if (arrow.hasClass("fa-angle-double-up")) {
+        arrow.removeClass("fa-angle-double-up")
+        arrow.addClass("fa-angle-double-down")
+    }
+
+}
+
 function setSpellDetailListener () {
     // event listener to test spell link click
-    $(".spell").on('click', function(event) {
-        divExists = ($(this).has(".spell-detail-content")).length
-
-        if (divExists) {
-            div = $(this).children(".spell-detail-content")
-            if(div.hasClass('hidden')) {
-                div.removeClass('hidden')
-            } else {
-                div.addClass('hidden')
-            }
-        } else {
-            $(this).append('<div class="spell-detail-content"></div>')
-            loadSpellDetail($(this))
+    $(".spell-header").on('click', function(event) {
+        if (event.target.tagName == 'A') {
+            // Don't run javascript if link clicked on
+            return
         }
+
+        spell = $(this).parent()
+        content_div = spell.children(".spell-detail-content")
+
+        if (content_div.length & content_div.hasClass('hidden')) {
+            content_div.removeClass('hidden')
+        } else if (content_div.length) {
+            content_div.addClass('hidden')
+        } else {
+            loadSpellDetail(spell)
+        }
+
+        flipArrow(spell)
     });
 }
 
@@ -68,9 +84,7 @@ function loadSpellDetail (target) {
             spell: target.attr('id'),
         },
         success: function(data){
-            div = $(target).children(".spell-detail-content")
-            $(div).html(data);
-            $(div).removeClass("hidden")
+            target.append(data)
         }
     });
 }
