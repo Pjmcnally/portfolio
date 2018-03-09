@@ -17,7 +17,7 @@ from .models import Clss, Spell
 def spell_list(request):
     """ function to render spell list page """
 
-    # get all classes for navbar
+    # get all classes for class search section
     context = {'classes': Clss.objects.all()}
     return render(request, 'spellbook/spell_list.html', context)
 
@@ -26,10 +26,22 @@ def spell_list_redirect(request):
 
 
 def spell_detail(request, slug):
-    classes = Clss.objects.all()  # get all classes for navbar
     spell = Spell.objects.get(slug=slug)
-    context = {'classes': classes, 'spell': spell}
+    context = {'spell': spell}
     return render(request, 'spellbook/spell_detail.html', context)
+
+def get_spell_detail(request):
+    # If not post request reject
+    if request.method != 'POST':
+        return HttpResponse("")
+
+    spell_slug = request.POST.get("spell", None)
+    if not spell_slug:
+        return HttpResponse("")
+
+    spell = Spell.objects.get(slug=spell_slug)
+    context = {'spell': spell}
+    return render(request, 'spellbook/get_spell_detail.html', context)
 
 
 def spells(request):
@@ -40,7 +52,6 @@ def spells(request):
     spells = Spell.objects.filter(source__public=True)
 
     clss_include = request.POST.get("class_inc").split()
-    print(clss_include)
     if clss_include:
         print("including")
         include = Q()
@@ -49,7 +60,6 @@ def spells(request):
         spells = spells.filter(include).distinct()
 
     clss_exclude = request.POST.get("class_exc").split()
-    print(clss_exclude)
     if clss_exclude:
         exclude = Q()
         for clss in clss_exclude:

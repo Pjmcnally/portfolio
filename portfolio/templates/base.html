@@ -11,7 +11,7 @@
       <meta name="author" content="Patrick McNally">
     {% endblock %}
 
-    
+
     <title>
       {% block title %}
         Pjmcnally Portfolio
@@ -45,9 +45,21 @@
 
   <body>
     {% block navbar %}
-    {% endblock %}
-
-    {% block internal_nav %}
+      <!-- Fixed navbar -->
+      <nav class="navbar main-navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!-- <button type="button" id="nav-toggle-main" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button> -->
+            <a href="/" class="navbar-brand" title="pjmcnally.net"><img class="site-logo" src="{% static '/site/icon/logo.svg' %}"></a>
+            <a class="navbar-brand" href="/spellbook/">Spellbook</a>
+          </div>
+        </div>
+      </nav>
     {% endblock %}
 
     {% block content %}
@@ -76,6 +88,8 @@
       <script src="{% static 'site/js/bootstrap.min.js' %}"></script>
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
       <script src="{% static 'site/js/ie10-viewport-bug-workaround.js' %}"></script>
+      <!-- Sitewide Javascript -->
+      <script src="{% static 'site/js/main.js' %}"></script>
     {% endblock %}
   </body>
 </html>

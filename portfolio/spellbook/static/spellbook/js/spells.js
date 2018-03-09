@@ -6,38 +6,6 @@ $(window).on("popstate", function() {
     loadContent();
 });
 
-// Set listener to loadContent when nav link is clicked.
-$(function() {
-    if (Modernizr.history) {
-        // history is support.  Use cool method.
-
-        // hijack the nav click event
-        $(".class-link").on("click", function(event) {
-            event.preventDefault();
-            var _href = $(this).attr("href");
-
-            // change the url without a page refresh and add a history entry.
-            history.pushState(null, null, _href);
-
-            // load the content
-            loadContent();
-        });
-        // hijack the nav click event
-        $(".level-link").on("click", function(event) {
-            event.preventDefault();
-            var _href = $(this).attr("href");
-
-            // Change the url without a page refresh and add a history entry.
-            history.pushState(null, null, _href);
-
-            // Scroll to new hash.
-            scrollTopOrHash();
-        });
-    } else {
-        // History not supported.  Nothing Fancy here.
-    }
-});
-
 // event listener to intercept form submission and instead load content
 $("#search-form").on("submit", function(event) {
     event.preventDefault();
@@ -47,9 +15,9 @@ $("#search-form").on("submit", function(event) {
 // event listener to load content on value change in search field.
 $("#search-input").on("input", function(event) {
     event.preventDefault();
-    removeHash();
     loadContent();
 });
+
 
 // event listener to load content when ritual checkbox value changes
 $(".search button").on("click", function(event) {
@@ -70,14 +38,67 @@ $(".search button").on("click", function(event) {
         }
     }
 
-    removeHash();
     loadContent();
 });
 
-function removeHash () {
-    if (window.location.hash) {
-        history.pushState(null, null, window.location.pathname + window.location.search);
+function flipArrow(elem, selector) {
+    arrow = $(elem).find(selector)
+    if (arrow.hasClass("fa-angle-double-down")) {
+        arrow.removeClass("fa-angle-double-down")
+        arrow.addClass("fa-angle-double-up")
+    } else if (arrow.hasClass("fa-angle-double-up")) {
+        arrow.removeClass("fa-angle-double-up")
+        arrow.addClass("fa-angle-double-down")
     }
+}
+
+function showOrHide (elem) {
+    if (elem.hasClass("hidden")) {
+        elem.removeClass("hidden")
+    } else {
+        elem.addClass("hidden")
+    }
+}
+
+function setSpellDetailListener () {
+    // event listener to test spell link click
+    $(".spell-header").on('click', function(event) {
+        if (event.target.tagName == 'A') {
+            // Don't run javascript if link clicked on
+            return
+        }
+
+        spell = $(this).parent()
+        content_div = spell.children(".spell-detail-content")
+
+        if (content_div.length) {
+            showOrHide(content_div)
+        } else {
+            loadSpellDetail(spell)
+        }
+
+        flipArrow(spell, ".fa")
+    });
+}
+
+function setSpellLevelListener () {
+    $(".spell-level").on('click', function(event) {
+        showOrHide($(this).siblings(".spell-list"))
+        flipArrow($(this).parent(), ".spell-level .fa")
+    })
+}
+
+function loadSpellDetail (target) {
+    $.ajax({
+        method: "post",
+        url: "/spellbook/get_spell_detail",
+        data: {
+            spell: target.attr('id'),
+        },
+        success: function(data){
+            target.append(data)
+        }
+    });
 }
 
 // Gets class buttons by boolean value and returns list
@@ -107,29 +128,10 @@ function loadContent () {
             search: $("#search-input").val(),
         },
         success: function(data){
-            $("#content-box").html(data);
-            showLevelLink();
-            scrollTopOrHash();
+            $("#spell-block").html(data);
+            setSpellDetailListener()
+            setSpellLevelListener()
         }
-    });
-}
-
-function scrollTopOrHash () {
-    var hash = window.location.hash;
-    if (hash) {
-        $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
-    } else {
-        $('html,body').scrollTop(0);
-    }
-}
-
-// function to show active level links in internal nav-bar
-function showLevelLink() {
-    $(".level-link").addClass("hidden");
-    $("#ll-search").removeClass("hidden");
-    $.each($(".spell-level-header"), function (index, value) {
-        var link = "#ll-" + value.id;
-        $(link).removeClass("hidden");
     });
 }
 

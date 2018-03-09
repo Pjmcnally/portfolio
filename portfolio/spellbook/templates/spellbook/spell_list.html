@@ -1,79 +1,48 @@
 {% extends parent_template|default:"spellbook/spellbook_base.html" %}
 {% load staticfiles %}
 
-{% block internal_nav %}
-  <!-- Second filxed navbar -->
-    <nav class="navbar internal-navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid test">
-        <div class="navbar-header">
-          <button type="button" id="nav-toggle-internal" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Spell Levels: </a>
-        </div>
-        <div id="navbar2" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav level-links in-nav-text">
-            <li><a href="#text-header" class="level-link hidden" id="ll-search">Search</a></li>
-            <li><a href="#cantrip" class="level-link hidden" id="ll-cantrip">Cantrips</a></li>
-            <li><a href="#level-1" class="level-link hidden" id="ll-level-1">1</a></li>
-            <li><a href="#level-2" class="level-link hidden" id="ll-level-2">2</a></li>
-            <li><a href="#level-3" class="level-link hidden" id="ll-level-3">3</a></li>
-            <li><a href="#level-4" class="level-link hidden" id="ll-level-4">4</a></li>
-            <li><a href="#level-5" class="level-link hidden" id="ll-level-5">5</a></li>
-            <li><a href="#level-6" class="level-link hidden" id="ll-level-6">6</a></li>
-            <li><a href="#level-7" class="level-link hidden" id="ll-level-7">7</a></li>
-            <li><a href="#level-8" class="level-link hidden" id="ll-level-8">8</a></li>
-            <li><a href="#level-9" class="level-link hidden" id="ll-level-9">9</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-{% endblock %}
-
 {% block content %}
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 spell-container">
-        <div class="spell-block">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-7 col-xl-6">
+        <div id="search-block">
           <div class="search text-search">
-            <h2 id="text-header" class="fixed-anchor spell-level-header">Search</h2>
+            <h2 id="text-header" class="spell-level-header">Search</h2>
             <form id="search-form">
               <input id="search-input" class="form-control" type="text" name="search" placeholder="Search...">
             </form>
           </div>
           <div class="search class-search">
-            <h2 id="class-header" class="fixed-anchor spell-level-header">
+            <h2 id="class-header" class="spell-level-header">
               Classes
               <button id="reset-class-btn" type="button" class="btn btn-default pull-right" value="">Reset</button>
             </h2>
-            {% for class in classes %}
-              <button id="{{ class.slug }}" type="button" class="btn btn-default class-btn" value="">{{ class.name|title }}</button>
-            {% endfor %}
-
+            <div >
+              {% for class in classes %}
+                <button id="{{ class.slug }}" type="button" class="btn btn-default class-btn" value="">{{ class.name|title }}</button>
+              {% endfor %}
+            </div>
           </div>
           <div class="search adv-search">
-            <h2 id="adv-header" class="fixed-anchor spell-level-header">
+            <h2 id="adv-header" class="spell-level-header">
               Advanced Options
               <button id="reset-adv-btn" type="button" class="btn btn-default pull-right" value="">Reset</button>
             </h2>
-            <button id="rit-btn" type="button" class="btn btn-default" value="">Ritual</button>
-            <button id="con-btn" type="button" class="btn btn-default" value="">Concentration</button>
-            <div id="components" class="search-option">
-              <p>Components:</p>
-              <div id="comp-btns" class="btn-group btn-group-sm" role="group">
-                <button id="v-btn" type="button" class="btn btn-default" value="">V</button>
-                <button id="s-btn" type="button" class="btn btn-default" value="">S</button>
-                <button id="m-btn" type="button" class="btn btn-default" value="">M</button>
+            <div>
+              <button id="rit-btn" type="button" class="btn btn-default" value="">Ritual</button>
+              <button id="con-btn" type="button" class="btn btn-default" value="">Concentration</button>
+              <div id="components" class="search-option">
+                <p>Components:</p>
+                <div id="comp-btns" class="btn-group btn-group-sm" role="group">
+                  <button id="v-btn" type="button" class="btn btn-default" value="">V</button>
+                  <button id="s-btn" type="button" class="btn btn-default" value="">S</button>
+                  <button id="m-btn" type="button" class="btn btn-default" value="">M</button>
+                </div>
               </div>
-
             </div>
           </div>
-        <!-- <a href="random"><h2> Random spell </h2></a> -->
         </div>
-        <div id="content-box">
+        <div id="spell-block">
         </div>
       </div>
     </div> <!-- end row -->
@@ -82,5 +51,6 @@
 
 {% block scripts %}
   {{ block.super }}
-  <script src="{% static 'spellbook/js/main.js' %}"></script>
+  <!-- Spellbook Javascript -->
+  <script src="{% static 'spellbook/js/spells.js' %}"></script>
 {% endblock %}

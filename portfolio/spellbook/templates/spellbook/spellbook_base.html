@@ -21,35 +21,17 @@
 
 {% block links %}
   {{ block.super }}
+  <link href="https://fonts.googleapis.com/css?family=Lora|Mate+SC" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- spellbook style sheet -->
   <link href="{% static 'spellbook/css/style.css' %}" rel="stylesheet">
 {% endblock %}
 
-{% block navbar %}
-  <!-- Fixed navbar -->
-  <nav class="navbar main-navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-<!--         <button type="button" id="nav-toggle-main" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button> -->
-        <a href="/" class="navbar-brand" title="pjmcnally.net"><img class="site-logo" src="{% static '/site/icon/logo.svg' %}"></a>
-        <a class="navbar-brand" href="/spellbook/">Spellbook</a>
-      </div>
-    </div>
-  </nav>
-{% endblock %}
-
 {% block footer %}
-  {{ block.super }} - A searchable list of 5e D&D spells, sorted by class and level - All spell data used under
+  {{ block.super }} - A searchable list of 5e D&D spells, sorted by class and level. All data used under
       the <a href="https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf">OGL</a>.
 {% endblock %}
 
 {% block scripts %}
   {{ block.super }}
-  <!-- Javascript for site -->
-  <script src="{% static 'site/js/main.js' %}"></script>
 {% endblock %}

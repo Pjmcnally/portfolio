@@ -1,22 +1,50 @@
 /*csslint order-alphabetical: false, box-sizing: false*/
 
 body {
-  padding-top: 100px;
-  min-width: 320px;
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom:100px;
+    min-width: 320px;
 }
 
-.spell-level-header {
-    padding-bottom: 2px;
-    border-bottom: 2px solid #0A4958;
+footer {
+    /* Not sure why this isn't inherited from body*/
+    min-width: 320px;
 }
 
-.fixed-anchor {
-    padding-top: 115px;
-    margin-top: -90px;
+.container {
+    font-family: 'Lora', serif;
+    font-size: 18px;
 }
 
 .navbar-collapse {
-  text-align: center;
+    text-align: center;
+}
+
+.spell-detail-content {
+    padding-left: 10px;
+    background-color: lightgrey;
+}
+
+.spell-header:hover {
+    background-color: lightgrey;
+}
+
+.spell-header .fa, .spell-level-header .fa {
+    display: none;
+    margin-left: 5px;
+}
+
+.spell-header:hover .fa, .spell-level-header:hover .fa {
+    display: inline;
+}
+
+.spell-level-footer {
+    text-align: center;
+}
+
+.spell-level-footer:hover {
+    background-color: lightgrey;
 }
 
 .navbar-nav {
@@ -24,44 +52,17 @@ body {
     float: none;
 }
 
-.internal-navbar {
-    margin-top: 50px;
-    border-width: 0;
-    background-color: white;
-}
-
 .nav > li > a {
     padding: 10px 10px;
-}
-
-@media (min-width: 768px) {
-  .internal-navbar .container-fluid {
-    width: 80%;
-  }
-}
-
-@media (max-width: 768px) {
-    .internal-navbar .navbar-brand {
-        margin-left: 60px;
-    }
-    .spell-container {
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-}
-
-.internal-navbar .container-fluid {
-    background-color: lightgrey;
 }
 
 .form-control {
     display: inline-block;
 }
 
-.spell-container {
-    font-family: 'Lora', serif;
-    font-size: 18px;
-    margin-bottom: 100px; /*Investigate this.  It shouldn't be needed*/
+.spell-level-header {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #0A4958;
 }
 
 .spell-name {
@@ -115,11 +116,6 @@ body {
 .spell-text td {
     padding: 8px;
     text-align: center;
-}
-
-.spell-block ul {
-    list-style-type: none;
-    padding-left: 1em;
 }
 
 /* This section impacts the advanced search section */
