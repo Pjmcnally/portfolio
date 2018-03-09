@@ -30,12 +30,12 @@ footer {
     background-color: lightgrey;
 }
 
-.spell-header .fa {
+.spell-header .fa, .spell-level-header .fa {
     display: none;
     margin-left: 5px;
 }
 
-.spell-header:hover .fa {
+.spell-header:hover .fa, .spell-level-header:hover .fa {
     display: inline;
 }
 
