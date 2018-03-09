@@ -1,25 +1,27 @@
 {% load spellbook_tags %}
 
 <!-- Returned in response to Ajax query -->
-<div class="spell-head">
-  <p class="spell-school-level">
-    {% if spell.level.num == 0 %}
-      {{spell.school}} {{spell.level}} {% if spell.ritual %} (ritual) {% endif %}
-    {% else %}
-      {{spell.level}} {{spell.school}} {% if spell.ritual %} (ritual) {% endif %}
-    {% endif %}
-  </p>
-</div>
-<div class="spell-detail">
-  <p><strong>Classes: </strong> {{ spell.clss.all|join:", " }}</p>
-  <p><strong>Sub Domains: </strong> {{ spell.sub_domain.all|join:", "|default:None }}</p>
-  <p><strong>Sources: </strong> {% for source in spell.spellsource_set.all %} {{ source.source }} {{ source.page }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-  <br>
-  <p><strong>Casting Time: </strong> {{ spell.casting_time }}{% if spell.cast_time_text %}, {{ spell.cast_time_text }} {% endif %}</p>
-  <p><strong>Range: </strong> {{ spell.rng }} {% if spell.range_text %} ({{ spell.range_text }}) {% endif %}</p>
-  <p><strong>Components: </strong> {{ spell.component.all|join:", " }} {% if spell.component_text %} ({{ spell.component_text }}) {% endif %}</p>
-  <p><strong>Duration: </strong> {% if spell.concentration %} Concentration, {{ spell.duration }} {% else %} {{ spell.duration|capfirst }}{% endif %}</p>
-</div>
-<div class="spell-text">
-  {{spell.text|markdownify|safe}}
+<div class="spell-detail-content">
+  <div class="spell-head">
+    <p class="spell-school-level">
+      {% if spell.level.num == 0 %}
+        {{spell.school}} {{spell.level}} {% if spell.ritual %} (ritual) {% endif %}
+      {% else %}
+        {{spell.level}} {{spell.school}} {% if spell.ritual %} (ritual) {% endif %}
+      {% endif %}
+    </p>
+  </div>
+  <div class="spell-detail">
+    <p><strong>Classes: </strong> {{ spell.clss.all|join:", " }}</p>
+    <p><strong>Sub Domains: </strong> {{ spell.sub_domain.all|join:", "|default:None }}</p>
+    <p><strong>Sources: </strong> {% for source in spell.spellsource_set.all %} {{ source.source }} {{ source.page }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <br>
+    <p><strong>Casting Time: </strong> {{ spell.casting_time }}{% if spell.cast_time_text %}, {{ spell.cast_time_text }} {% endif %}</p>
+    <p><strong>Range: </strong> {{ spell.rng }} {% if spell.range_text %} ({{ spell.range_text }}) {% endif %}</p>
+    <p><strong>Components: </strong> {{ spell.component.all|join:", " }} {% if spell.component_text %} ({{ spell.component_text }}) {% endif %}</p>
+    <p><strong>Duration: </strong> {% if spell.concentration %} Concentration, {{ spell.duration }} {% else %} {{ spell.duration|capfirst }}{% endif %}</p>
+  </div>
+  <div class="spell-text">
+    {{spell.text|markdownify|safe}}
+  </div>
 </div>
