@@ -39,6 +39,14 @@ footer {
     display: inline;
 }
 
+.spell-level-footer {
+    text-align: center;
+}
+
+.spell-level-footer:hover {
+    background-color: lightgrey;
+}
+
 .navbar-nav {
     display: inline-block;
     float: none;
