@@ -41,8 +41,8 @@ $(".search button").on("click", function(event) {
     loadContent();
 });
 
-function flipArrow(elem) {
-    arrow = $(elem).find(".fa")
+function flipArrow(elem, selector) {
+    arrow = $(elem).find(selector)
     if (arrow.hasClass("fa-angle-double-down")) {
         arrow.removeClass("fa-angle-double-down")
         arrow.addClass("fa-angle-double-up")
@@ -77,15 +77,14 @@ function setSpellDetailListener () {
             loadSpellDetail(spell)
         }
 
-        flipArrow(spell)
+        flipArrow(spell, ".fa")
     });
 }
 
-function setSpellHeaderListener () {
-    $(".spell-level-header").on('click', function(event) {
-        parent = $(event.target).parent()
-        showOrHide($(parent).children(".spell-list"))
-        flipArrow($(event.target))
+function setSpellLevelListener () {
+    $(".spell-level").on('click', function(event) {
+        showOrHide($(this).siblings(".spell-list"))
+        flipArrow($(this).parent(), ".spell-level .fa")
     })
 }
 
@@ -131,7 +130,7 @@ function loadContent () {
         success: function(data){
             $("#spell-block").html(data);
             setSpellDetailListener()
-            setSpellHeaderListener()
+            setSpellLevelListener()
         }
     });
 }
