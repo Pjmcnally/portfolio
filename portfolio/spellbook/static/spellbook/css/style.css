@@ -71,16 +71,32 @@ footer {
     margin-bottom: -5px;
 }
 
+.spell-detail-content .spell-name {
+    font-size: 1.5em;
+    margin-top: 0;
+    padding-top: 15px;
+}
+
 .spell-school-level {
     font-size: 1.25em;
     font-style: italic;
 }
+
+.spell-detail-content .spell-school-level {
+    font-size: 1em;
+}
+
 .spell-detail p {
     margin-bottom: 2px;
 }
 
 .spell-head, .spell-detail {
     margin-bottom: 20px;
+}
+
+.spell-text {
+    padding-bottom: 1px;
+    margin-bottom: 5px;
 }
 
 .spell-text table {
