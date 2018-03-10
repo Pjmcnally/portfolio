@@ -3,6 +3,7 @@
 <!-- Returned in response to Ajax query -->
 <div class="spell-detail-content">
   <div class="spell-head">
+    <h3 class="spell-name">{{spell.name}}</h3>
     <p class="spell-school-level">
       {% if spell.level.num == 0 %}
         {{spell.school}} {{spell.level}} {% if spell.ritual %} (ritual) {% endif %}
