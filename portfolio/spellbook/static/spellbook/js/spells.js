@@ -89,6 +89,7 @@ function setSpellLevelListener () {
 }
 
 function loadSpellDetail (target) {
+    target.append("<div class='loader spell-detail-content'><h3 class='loading spell-name'>Loading<span>.</span><span>.</span><span>.</span></h3></div>")
     $.ajax({
         method: "post",
         url: "/spellbook/get_spell_detail",
@@ -96,6 +97,7 @@ function loadSpellDetail (target) {
             spell: target.attr('id'),
         },
         success: function(data){
+            $(".loader").remove()
             target.append(data)
         }
     });
