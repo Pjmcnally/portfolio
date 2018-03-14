@@ -30,6 +30,6 @@ urlpatterns = [
     url(r'^lol_app/', include(lol_app_urls)),
     url(r'^baseball/', include(baseball_urls)),
     url(r'^email/', include(contact_urls)),
-    url(r'^user/', include(user_urls)),
+    url(r'^user/', include(user_urls, app_name='user', namespace='dj-auth')),
     url(r'^', include(home_urls)),
 ]
