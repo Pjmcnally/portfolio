@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'spellbook',
-    'magic',
     'baseball',
     'lol_app',
     'contact',
+    'user',
 ]
 
 MIDDLEWARE = [

@@ -18,10 +18,10 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from spellbook import urls as spellbook_urls
 from home import urls as home_urls
-from magic import urls as magic_urls
 from baseball import urls as baseball_urls
 from lol_app import urls as lol_app_urls
 from contact import urls as contact_urls
+from user import urls as user_urls
 
 urlpatterns = [
     url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots_file"),
@@ -29,8 +29,7 @@ urlpatterns = [
     url(r'^spellbook/', include(spellbook_urls)),
     url(r'^lol_app/', include(lol_app_urls)),
     url(r'^baseball/', include(baseball_urls)),
-    url(r'^magic/', include(magic_urls)),
     url(r'^email/', include(contact_urls)),
-    # url(r'^gifter/', include(gifter_url)),
+    url(r'^user/', include(user_urls)),
     url(r'^', include(home_urls)),
 ]
