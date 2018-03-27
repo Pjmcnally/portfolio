@@ -71,10 +71,12 @@ function setSpellDetailListener () {
         spell = $(this).parent()
         content_div = spell.children(".spell-detail-content")
 
-        if (content_div.length) {
-            showOrHide(content_div)
+        if ($(content_div).hasClass("empty")) {
+            loadSpellDetail(content_div)
+            $(content_div).removeClass("empty")
         } else {
-            loadSpellDetail(spell)
+            showOrHide(content_div)
+
         }
 
         flipArrow(spell, ".fa")
@@ -89,16 +91,17 @@ function setSpellLevelListener () {
 }
 
 function loadSpellDetail (target) {
-    target.append("<div class='loader spell-detail-content'><h3 class='loading spell-name'>Loading<span>.</span><span>.</span><span>.</span></h3></div>")
+    target.addClass('loader')
+    target.html("<h3 class='loading spell-name'>Loading<span>.</span><span>.</span><span>.</span></h3>")
     $.ajax({
         method: "post",
         url: "/spellbook/get_spell_detail",
         data: {
-            spell: target.attr('id'),
+            spell: target.parent().attr('id'),
         },
         success: function(data){
-            $(".loader").remove()
-            target.append(data)
+            target.removeClass("loader")
+            target.html(data)
         }
     });
 }
