@@ -74,12 +74,13 @@ function setSpellDetailListener () {
         if ($(content_div).hasClass("empty")) {
             loadSpellDetail(content_div)
             $(content_div).removeClass("empty")
+            showOrHide(spell.children(".spell-footer"))
         } else {
             showOrHide(content_div)
-
+            showOrHide(spell.children(".spell-footer"))
         }
 
-        flipArrow(spell, ".fa")
+        flipArrow(spell, ".flip")
     });
 }
 
