@@ -7,11 +7,6 @@ body {
     min-width: 320px;
 }
 
-footer {
-    /* Not sure why this isn't inherited from body*/
-    min-width: 320px;
-}
-
 .container {
     font-family: 'Lora', serif;
     font-size: 18px;
