@@ -12,13 +12,32 @@ body {
     font-size: 18px;
 }
 
-.navbar-collapse {
-    text-align: center;
+.spell.expanded {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.spell-detail-content {
+.spell.expanded .name {
+    display: none;
+}
+
+.spell.shrunk .content {
+    display: none;
+}
+
+.spell .content {
     padding-left: 10px;
     background-color: lightgrey;
+}
+
+.spell .content h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+    padding-top: 15px;
+}
+
+.spell .content .spell-school-level {
+    font-size: 1em;
 }
 
 .spell-header:hover {
@@ -38,10 +57,9 @@ body {
     padding-left: 10px;
     background-color: lightgrey;
     margin-top: 0;
-    margin-bottom: 2px;
 }
 
-.spell-level-footer, .spell-footer {
+.spell-level-footer {
     text-align: center;
 }
 
@@ -69,19 +87,9 @@ div[class="spell-detail-content"] {
     margin-bottom: 0;
 }
 
-.spell-detail-content h3 {
-    font-size: 1.5em;
-    margin-top: 0;
-    padding-top: 15px;
-}
-
 .spell-school-level {
     font-size: 1.25em;
     font-style: italic;
-}
-
-.spell-detail-content .spell-school-level {
-    font-size: 1em;
 }
 
 .spell-head, .spell-detail {
