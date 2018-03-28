@@ -74,9 +74,12 @@ function setSpellDetailListener () {
     // event listener to test spell link click
     $(".spell").on('click', function(event) {
 
-        if ($(event.target).hasClass("spell-title-link")) {
+
+        // I may want to improve this to make it so highlight the spell name doesn't
+        // interfere with popping open the spell detail. However, this works for now.
+        if ($(event.target).hasClass("spell-title-link") || window.getSelection().toString()) {
             return
-            // Don't run javascript below
+            // Don't run javascript below. This will allow link to fire or people to highlight text.
         }
 
         event.preventDefault()
