@@ -40,7 +40,7 @@ body {
     font-size: 1em;
 }
 
-.spell-header:hover {
+.spell .name:hover {
     background-color: lightgrey;
 }
 
