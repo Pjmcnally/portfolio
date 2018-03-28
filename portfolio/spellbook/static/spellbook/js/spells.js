@@ -60,27 +60,35 @@ function showOrHide (elem) {
     }
 }
 
+function shrinkOrExpand (elem) {
+    if (elem.hasClass("shrunk")) {
+        elem.removeClass("shrunk")
+        elem.addClass("expanded")
+    } else {
+        elem.removeClass("expanded")
+        elem.addClass("shrunk")
+    }
+}
+
 function setSpellDetailListener () {
     // event listener to test spell link click
-    $(".spell-header, .spell-footer").on('click', function(event) {
-        if (event.target.tagName == 'A') {
-            // Don't run javascript if link clicked on
+    $(".spell").on('click', function(event) {
+
+        if ($(event.target).hasClass("spell-title-link")) {
             return
+            // Don't run javascript below
         }
 
-        spell = $(this).parent()
-        content_div = spell.children(".spell-detail-content")
+        event.preventDefault()
+        spell = $(this)
 
-        if ($(content_div).hasClass("empty")) {
-            loadSpellDetail(content_div)
-            $(content_div).removeClass("empty")
-            showOrHide(spell.children(".spell-footer"))
+        if (spell.hasClass("empty")) {
+            spell.removeClass("empty")
+            shrinkOrExpand(spell)
+            loadSpellContent(spell)
         } else {
-            showOrHide(content_div)
-            showOrHide(spell.children(".spell-footer"))
+            shrinkOrExpand(spell)
         }
-
-        flipArrow(spell, ".flip")
     });
 }
 
@@ -91,18 +99,20 @@ function setSpellLevelListener () {
     })
 }
 
-function loadSpellDetail (target) {
-    target.addClass('loader')
-    target.html("<h3 class='loading spell-name'>Loading<span>.</span><span>.</span><span>.</span></h3>")
+function loadSpellContent (target) {
+    contentDiv = $(target).children(".content")
+
+    contentDiv.addClass('loader')
+    contentDiv.html("<h3 class='loading spell-name'>Loading<span>.</span><span>.</span><span>.</span></h3>")
     $.ajax({
         method: "post",
         url: "/spellbook/get_spell_detail",
         data: {
-            spell: target.parent().attr('id'),
+            spell: contentDiv.parent().attr('id'),
         },
         success: function(data){
-            target.removeClass("loader")
-            target.html(data)
+            contentDiv.removeClass("loader")
+            contentDiv.html(data)
         }
     });
 }
