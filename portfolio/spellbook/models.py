@@ -36,7 +36,7 @@ class Clss(models.Model):
 class Component(models.Model):
     full_name = models.CharField(max_length=20, unique=True)
     short_name = models.CharField(max_length=1, unique=True)
-    sort_val = models.SmallIntegerField(unique=True)  # A field to aid in arbitrary sorting
+    sort_val = models.SmallIntegerField(unique=True)  # A field to help sort
     slug = models.SlugField(
         max_length=1,
         unique=True,
