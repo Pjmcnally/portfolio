@@ -9,7 +9,6 @@ from portfolio import local_settings
 import json
 from distutils import util
 
-
 from .models import Clss, Spell
 
 
@@ -21,6 +20,7 @@ def spell_list(request):
     context = {'classes': Clss.objects.all()}
     return render(request, 'spellbook/spell_list.html', context)
 
+
 def spell_list_redirect(request):
     return redirect('sb_spell_list')
 
@@ -29,6 +29,7 @@ def spell_detail(request, slug):
     spell = Spell.objects.get(slug=slug)
     context = {'spell': spell}
     return render(request, 'spellbook/spell_detail.html', context)
+
 
 def get_spell_detail(request):
     # If not post request reject
@@ -49,6 +50,7 @@ def spells(request):
     if request.method != 'POST':
         return HttpResponse("")
 
+    # spells = Spell.objects.all()
     spells = Spell.objects.filter(source__public=True)
 
     clss_include = request.POST.get("class_inc").split()
@@ -118,8 +120,7 @@ def spells(request):
             9: spells.filter(level__num=9),
         }
 
-        context = {
-            'spells': spell_dict}
+        context = {'spells': spell_dict}
 
         return render(request, 'spellbook/spells.html', context)
 
@@ -141,17 +142,20 @@ class RandomJson(View):
         spell_obj = {
             'name': spell.name,
             'url': spell.get_absolute_url(),
-            'slug': spell.slug}
+            'slug': spell.slug
+        }
         return JsonResponse(spell_obj)
 
     def post(self, request):
-        if request.POST.get('key') != local_settings.TWITTERBOT_KEY:  # simple attempt at security
+        # simple attempt at security
+        if request.POST.get('key') != local_settings.TWITTERBOT_KEY:
             return None
 
         spell = None
 
         while not spell:
-            spells = Spell.objects.all().filter(source__public=True).filter(tweeted=False)
+            spells = Spell.objects.all().filter(source__public=True).filter(
+                tweeted=False)
 
             if spells:
                 spell = choice(spells)
@@ -167,5 +171,6 @@ class RandomJson(View):
         spell_obj = {
             'name': spell.name,
             'url': spell.get_absolute_url(),
-            'slug': spell.slug}
+            'slug': spell.slug
+        }
         return JsonResponse(spell_obj)
