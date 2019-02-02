@@ -49,6 +49,7 @@ def spells(request):
     if request.method != 'POST':
         return HttpResponse("")
 
+    # spells = Spell.objects.all()
     spells = Spell.objects.filter(source__public=True)
 
     clss_include = request.POST.get("class_inc").split()
