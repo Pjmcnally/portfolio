@@ -5,9 +5,7 @@ from django.urls import reverse
 class CastingTime(models.Model):
     text = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(
-        max_length=100,
-        unique=True,
-        help_text='A label for URL config')
+        max_length=100, unique=True, help_text='A label for URL config')
 
     def __str__(self):
         return self.text
@@ -21,7 +19,8 @@ class Clss(models.Model):
     slug = models.SlugField(
         max_length=20,
         unique=True,
-        help_text='A lable for URL config',)
+        help_text='A lable for URL config',
+    )
 
     def __str__(self):
         return self.name.title()
@@ -36,11 +35,12 @@ class Clss(models.Model):
 class Component(models.Model):
     full_name = models.CharField(max_length=20, unique=True)
     short_name = models.CharField(max_length=1, unique=True)
-    sort_val = models.SmallIntegerField(unique=True)  # A field to aid in arbitrary sorting
+    sort_val = models.SmallIntegerField(unique=True)  # A field to help sort
     slug = models.SlugField(
         max_length=1,
         unique=True,
-        help_text='A lable for URL config',)
+        help_text='A label for URL config',
+    )
 
     def __str__(self):
         return self.short_name
@@ -54,7 +54,8 @@ class Domain(models.Model):
     slug = models.SlugField(
         max_length=20,
         unique=True,
-        help_text='A lable for URL config',)
+        help_text='A label for URL config',
+    )
 
     def __str__(self):
         return self.name.title()
@@ -66,9 +67,7 @@ class Domain(models.Model):
 class Duration(models.Model):
     text = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(
-        max_length=100,
-        unique=True,
-        help_text='A label for URL config')
+        max_length=100, unique=True, help_text='A label for URL config')
 
     def __str__(self):
         return self.text
@@ -83,7 +82,8 @@ class Level(models.Model):
     slug = models.SlugField(
         max_length=20,
         unique=True,
-        help_text='A lable for URL config',)
+        help_text='A label for URL config',
+    )
     num = models.SmallIntegerField()
 
     def __str__(self):
@@ -96,9 +96,7 @@ class Level(models.Model):
 class Range(models.Model):
     text = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(
-        max_length=100,
-        unique=True,
-        help_text='A label for URL config')
+        max_length=100, unique=True, help_text='A label for URL config')
 
     def __str__(self):
         return self.text
@@ -112,7 +110,8 @@ class School(models.Model):
     slug = models.SlugField(
         max_length=20,
         unique=True,
-        help_text='A lable for URL config',)
+        help_text='A label for URL config',
+    )
 
     def __str__(self):
         return self.name.title()
@@ -127,13 +126,13 @@ class Source(models.Model):
     slug = models.SlugField(
         max_length=20,
         unique=True,
-        help_text='A lable for URL config',)
+        help_text='A label for URL config',
+    )
     version = models.CharField(max_length=100)
     link = models.URLField(max_length=255)
     public = models.BooleanField()
 
-    spells = models.ManyToManyField(
-        'spell', through='SpellSource')
+    spells = models.ManyToManyField('spell', through='SpellSource')
 
     def __str__(self):
         return self.short_name
@@ -155,7 +154,8 @@ class SubDomain(models.Model):
     name = models.CharField(max_length=20)
     slug = models.SlugField(
         max_length=20,
-        help_text='A lable for URL config',)
+        help_text='A label for URL config',
+    )
     domain = models.ForeignKey('Domain', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -171,7 +171,8 @@ class Spell(models.Model):
     slug = models.SlugField(
         max_length=100,
         unique=True,
-        help_text='A lable for URL config',)
+        help_text='A label for URL config',
+    )
     text = models.TextField()
     concentration = models.BooleanField()
     ritual = models.BooleanField()
@@ -187,16 +188,10 @@ class Spell(models.Model):
     rng = models.ForeignKey('Range', on_delete=models.CASCADE)
     school = models.ForeignKey('School', on_delete=models.CASCADE)
 
-    clss = models.ManyToManyField(
-        'Clss',
-        related_name="spells")
-    component = models.ManyToManyField(
-        'Component',
-        related_name='spells')
+    clss = models.ManyToManyField('Clss', related_name="spells")
+    component = models.ManyToManyField('Component', related_name='spells')
     sub_domain = models.ManyToManyField(
-        'SubDomain',
-        related_name='spells',
-        blank=True)
+        'SubDomain', related_name='spells', blank=True)
 
     def __str__(self):
         return self.name
