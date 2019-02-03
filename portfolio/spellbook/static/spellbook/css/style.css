@@ -39,7 +39,14 @@ footer {
     display: inline;
 }
 
-.spell-level-footer {
+.spell-footer {
+    padding-left: 10px;
+    background-color: lightgrey;
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.spell-level-footer, .spell-footer {
     text-align: center;
 }
 
@@ -71,6 +78,11 @@ footer {
     margin-bottom: -5px;
 }
 
+div[class="spell-detail-content"] {
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+
 .spell-detail-content h3 {
     font-size: 1.5em;
     margin-top: 0;
@@ -86,17 +98,8 @@ footer {
     font-size: 1em;
 }
 
-.spell-detail p {
-    margin-bottom: 2px;
-}
-
 .spell-head, .spell-detail {
     margin-bottom: 20px;
-}
-
-.spell-text {
-    padding-bottom: 1px;
-    margin-bottom: 5px;
 }
 
 .spell-text table {
