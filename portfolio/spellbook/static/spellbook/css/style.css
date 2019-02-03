@@ -49,15 +49,6 @@ body {
     background-color: lightgrey;
 }
 
-.navbar-nav {
-    display: inline-block;
-    float: none;
-}
-
-.nav > li > a {
-    padding: 10px 10px;
-}
-
 .form-control {
     display: inline-block;
 }
