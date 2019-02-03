@@ -62,7 +62,7 @@ function showOrHide (elem) {
 
 function setSpellDetailListener () {
     // event listener to test spell link click
-    $(".spell-header").on('click', function(event) {
+    $(".spell-header, .spell-footer").on('click', function(event) {
         if (event.target.tagName == 'A') {
             // Don't run javascript if link clicked on
             return
