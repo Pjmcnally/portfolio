@@ -2,7 +2,7 @@
 
 <!-- Returned in response to Ajax query -->
 <div class="spell-head">
-  <h3 class="spell-name">{{spell.name}}</h3>
+    <h3 class="spell-name"><a href="{{spell.get_absolute_url}}" class="spell-title-link">{{spell.name}}</a></h3>
   <p class="spell-school-level">
     {% if spell.level.num == 0 %}
       {{spell.school}} {{spell.level}} {% if spell.ritual %} (ritual) {% endif %}
@@ -24,4 +24,3 @@
 <div class="spell-text">
   {{spell.text|markdownify|safe}}
 </div>
-
