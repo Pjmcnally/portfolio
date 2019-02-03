@@ -1,4 +1,4 @@
-/*csslint order-alphabetical: false, box-sizing: false*/
+/* csslint order-alphabetical: false, box-sizing: false*/
 
 body {
     margin: 0;
@@ -16,32 +16,60 @@ body {
     text-align: center;
 }
 
-.spell-detail-content {
+.spell.expanded {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.spell.expanded .spell-list-name {
+    display: none;
+}
+
+.spell.shrunk .spell-content {
+    display: none;
+}
+
+.spell-content {
     padding-left: 10px;
     background-color: lightgrey;
 }
 
-.spell-header:hover {
+.spell-content h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.spell-content .spell-school-level {
+    font-size: 1em;
+}
+
+.spell-list-name:hover {
     background-color: lightgrey;
 }
 
-.spell-header .fa, .spell-level-header .fa {
+.spell-list-name .fa, .spell-level-header .fa {
     display: none;
     margin-left: 5px;
 }
 
-.spell-header:hover .fa, .spell-level-header:hover .fa {
+.spell-list-name:hover .fa, .spell-level-header:hover .fa {
     display: inline;
 }
 
-.spell-footer {
+.spell-footer, .spell-header {
+    text-align: center;
     padding-left: 10px;
     background-color: lightgrey;
     margin-top: 0;
-    margin-bottom: 2px;
 }
 
-.spell-level-footer, .spell-footer {
+.spell.shrunk .spell-footer,
+.spell.shrunk .spell-header,
+.spell.shrunk .spell-content {
+    display: none;
+}
+
+.spell-level-footer {
     text-align: center;
 }
 
@@ -64,9 +92,14 @@ body {
     margin-bottom: -5px;
 }
 
-div[class="spell-detail-content"] {
+div.spell-content {
     padding-bottom: 5px;
     margin-bottom: 0;
+}
+
+.spell-school-level {
+    font-size: 1.25em;
+    font-style: italic;
 }
 
 .spell-detail-content h3 {
